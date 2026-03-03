@@ -1,0 +1,207 @@
+﻿{
+	"Alveary": {
+		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Alveary.name]",
+		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Alveary.desc]",
+		"Texture": "Mods/tlitookilakin.FunkyBuildings/Alveary",
+		"BuildingType": "FunkyBuildings.Buildings.Alveary",
+		"Builder": "Robin",
+		"BuildCost": 20000,
+		"BuildMaterials": [
+			{ "Id": "hardwood", "ItemId": "(O)709", "Amount": 50 },
+			{ "Id": "honey", "ItemId": "(O)340", "Amount": 28 },
+			{ "Id": "gold", "ItemId": "(O)336", "Amount": 5 }
+		],
+		"BuildDays": 2,
+		"BuildCondition": "PLAYER_FARMING_LEVEL Current 5, PLAYER_HAS_CRAFTING_RECIPE Current Bee House",
+		"Size": { "X": 3, "Y": 3 },
+		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 80 },
+		"SeasonOffset": { "X": 48, "Y": 0 },
+		"DrawLayers": [
+			{ 
+				"Id": "honey", 
+				"SourceRect": {"X": 0, "Y": 80, "Width": 48, "Height": 80}, 
+				"OnlyDrawIfChestHasContents": "Output",
+				"DrawPosition": "0, 0"
+			}
+		],
+		"Chests": [
+			{ "Id": "Output", "Type": "Collect" }
+		],
+		"DefaultAction": "BuildingChest Output"
+	},
+	"LightningRod": {
+		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.LightningRod.name]",
+		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.LightningRod.desc]",
+		"Texture": "Mods/tlitookilakin.FunkyBuildings/LightningRod",
+		"BuildingType": "FunkyBuildings.Buildings.LightningRod",
+		"Builder": "Robin",
+		"BuildCost": 100000,
+		"BuildMaterials": [
+			{ "Id": "iron", "ItemId": "(O)335", "Amount": 20 },
+			{ "Id": "quartz", "ItemId": "(O)338", "Amount": 20 },
+			{ "Id": "iridium", "ItemId": "(O)337", "Amount": 10 }
+		],
+		"BuildDays": 2,
+		"BuildCondition": "LOCATION_NAME Target Farm, !BUILDINGS_CONSTRUCTED Target tlitookilakin.FunkyBuildings_LightningRod 1",
+		"Size": { "X": 3, "Y": 1 },
+		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 128 },
+		"SeasonOffset": { "X": 48, "Y": 0 },
+		"Chests": [
+			{ "Id": "Input", "Type": "Chest" },
+			{ "Id": "Output", "Type": "Collect", "DisplayTile": "1, 1", "DisplayHeight": 0 }
+		],
+		"DrawLayers": [
+			{
+				"Id": "BirdTop",
+				"SourceRect": { "X": 0, "Y": 144, "Width": 16, "Height": 16 },
+				"DrawPosition": { "X": 16, "Y": 44 },
+				"FrameCount": 3,
+				"FrameDuration": 578764
+			},
+			{
+				"Id": "BirdBottom",
+				"SourceRect": { "X": 0, "Y": 128, "Width": 16, "Height": 16 },
+				"DrawPosition": { "X": 23, "Y": 82 },
+				"FrameCount": 3,
+				"FrameDuration": 338437
+			}
+		],
+		"DrawShadow": true,
+		"DefaultAction": "BuildingChest Output"
+	},
+	"OminousEffigy": {
+		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.OminousEffigy.name]",
+		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.OminousEffigy.desc]",
+		"Texture": "Mods/tlitookilakin.FunkyBuildings/Effigy",
+		"BuildingType": "FunkyBuildings.Buildings.OminousEffigy",
+		"Builder": "Wizard",
+		"BuildCost": 1000000,
+		"BuildMaterials": [
+			{ "Id": "void essence", "ItemId": "(O)769", "Amount": 60 },
+			{ "Id": "bone", "ItemId": "(O)881", "Amount": 20 },
+			{ "Id": "tar", "ItemId": "(O)726", "Amount": 10 }
+		],
+		"BuildDays": 0,
+		"BuildCondition": "LOCATION_NAME Target Farm, !BUILDINGS_CONSTRUCTED Target tlitookilakin.FunkyBuildings_OminousEffigy 1, PLAYER_HAS_MAIL Any RarecrowSociety",
+		"Size": { "X": 3, "Y": 3 },
+		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 160 },
+		"SeasonOffset": { "X": 48, "Y": 0 },
+		"DefaultAction": "tlitookilakin.FunkyBuildings_OminousEffigy",
+		"MagicalBuilding": true
+	},
+	"FieldStone": {
+		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.FieldStone.name]",
+		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.FieldStone.desc]",
+		"Texture": "Mods/tlitookilakin.FunkyBuildings/FieldStone",
+		"Builder": "Wizard",
+		"BuildCost": 20000,
+		"BuildMaterials": [
+			{"ID": "quartz", "ItemId": "(O)338", "Amount": 10},
+			{"ID": "gemberry", "ItemId": "(O)417", "Amount": 1},
+			{"ID": "fairydust", "ItemId": "(O)872", "Amount": 1}
+		],
+		"Size": {"X": 2, "Y": 2},
+		"SourceRect": {"X": 0, "Y": 0, "Width": 32, "Height": 80},
+		"SeasonOffset": {"X": 32, "Y": 0}
+	},
+	"Stockpile": {
+		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Stockpile.name]",
+		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Stockpile.desc]",
+		"Texture": "Mods/tlitookilakin.FunkyBuildings/Stockpile",
+		"Builder": "Robin",
+		"BuildCost": 10000,
+		"BuildMaterials": [
+			{ "Id": "wood", "ItemId": "(O)388", "Amount": 500 },
+			{ "Id": "stone", "ItemId": "(O)390", "Amount": 200 },
+			{ "Id": "iron", "ItemId": "(O)335", "Amount": 10 }
+		],
+		"BuildDays": 1,
+		"Size": { "X": 3, "Y": 3 },
+		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 80 },
+		"ModData":  {
+			"tlitookilakin.FunkyBuildings_Capacity": "300"
+		},
+		"Chests": [
+			{ "Id": "storage", "Type": "Chest" }
+		],
+		"DefaultAction": "tlitookilakin.FunkyBuildings_OpenStockpile"
+	},
+	"BigStockpile": {
+		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.BigStockpile.name]",
+		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.BigStockpile.desc]",
+		"Texture": "Mods/tlitookilakin.FunkyBuildings/BigStockpile",
+		"Builder": "Robin",
+		"BuildCost": 25000,
+		"BuildingToUpgrade": "tlitookilakin.FunkyBuildings_Stockpile",
+		"BuildMaterials": [
+			{ "Id": "hardwood", "ItemId": "(O)709", "Amount": 100 },
+			{ "Id": "stone", "ItemId": "(O)390", "Amount": 300 },
+			{ "Id": "iron", "ItemId": "(O)335", "Amount": 10 }
+		],
+		"BuildDays": 1,
+		"Size": { "X": 3, "Y": 3 },
+		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 80 },
+		"ModData":  {
+			"tlitookilakin.FunkyBuildings_Capacity": "600"
+		},
+		"Chests": [
+			{ "Id": "storage", "Type": "Chest" }
+		],
+		"DefaultAction": "tlitookilakin.FunkyBuildings_OpenStockpile"
+	},
+	"DeluxeStockpile": {
+		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.DeluxeStockpile.name]",
+		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.DeluxeStockpile.desc]",
+		"Texture": "Mods/tlitookilakin.FunkyBuildings/DeluxeStockpile",
+		"Builder": "Robin",
+		"BuildCost": 40000,
+		"BuildingToUpgrade": "tlitookilakin.FunkyBuildings_BigStockpile",
+		"BuildMaterials": [
+			{ "Id": "hardwood", "ItemId": "(O)709", "Amount": 150 },
+			{ "Id": "stone", "ItemId": "(O)390", "Amount": 300 },
+			{ "Id": "iron", "ItemId": "(O)335", "Amount": 15 }
+		],
+		"BuildDays": 1,
+		"Size": { "X": 3, "Y": 3 },
+		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 80 },
+		"ModData":  {
+			"tlitookilakin.FunkyBuildings_Capacity": "900"
+		},
+		"Chests": [
+			{ "Id": "storage", "Type": "Chest" }
+		],
+		"DefaultAction": "tlitookilakin.FunkyBuildings_OpenStockpile"
+	},
+	"MagicPond": {
+		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.MagicPond.name]",
+		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.MagicPond.desc]",
+		"Texture": "Mods/tlitookilakin.FunkyBuildings/MagicPond",
+		"BuildingType": "FunkyBuildings.Buildings.MagicPond",
+		"Builder": "Wizard",
+		"BuildCost": 100000,
+		"BuildMaterials": [
+			{ "Id": "iridium", "ItemId": "(O)337", "Amount": 3 },
+			{ "Id": "pearl", "ItemId": "(O)797", "Amount": 1 },
+			{ "Id": "stone", "ItemId": "(O)390", "Amount": 200 }
+		],
+		"Size": { "X": 5, "Y": 5 },
+		"SourceRect": { "X": 0, "Y": 0, "Width": 80, "Height": 96 },
+		"DrawLayers": [
+			{ 
+				"Id": "underwater", 
+				"SourceRect": {"X": 80, "Y": 0, "Width": 80, "Height": 80}, 
+				"DrawPosition": "0, 0",
+				"DrawInBackground": true
+			}
+		],
+		"TileProperties": [
+			{
+				"Id": "water",
+				"Name": "Water",
+				"Value": "T",
+				"Layer": "Buildings",
+				"TileArea": {"X": 0, "Y": 0, "Width": 5, "Height": 5}
+			}
+		]
+	}
+}

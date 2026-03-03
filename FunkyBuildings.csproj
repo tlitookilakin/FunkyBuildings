@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<enableharmony>true</enableharmony>
+		<LangVersion>Latest</LangVersion>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<Authors>Tlitookilakin</Authors>
+		<Description>Adds many new buildings.</Description>
+		<UniqueId>tlitookilakin.FunkyBuildings</UniqueId>
+		<Name>Funky Buildings</Name>
+		<MinimumApiVersion_Behavior>Update</MinimumApiVersion_Behavior>
+		<UpdateKeys></UpdateKeys>
+		<Version>1.0.0</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Leclair.Stardew.ModManifestBuilder" Version="2.4.1" />
+		<PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
+		<PackageReference Include="tlitookilakin.StarModGen" Version="0.2.5" ExcludeAssets="runtime" />
+		<Reference Include="SpaceCore">
+			<HintPath>$(GameModsPath)\SpaceCore\SpaceCore.dll</HintPath>
+			<Private>false</Private>
+			<SMAPIDependency_VersionBehavior>Update</SMAPIDependency_VersionBehavior>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<AdditionalFiles Include="assets/buildings.json" GameAssetMerge="Data/Buildings" />
+		<AdditionalFiles Include="assets/exteriors/alveary.png" GameAssetLoad="/Alveary" />
+		<AdditionalFiles Include="assets/exteriors/field_stone.png" GameAssetLoad="/FieldStone" />
+		<AdditionalFiles Include="assets/exteriors/lightning_rod.png" GameAssetLoad="/LightningRod" />
+	</ItemGroup>
+
+</Project>

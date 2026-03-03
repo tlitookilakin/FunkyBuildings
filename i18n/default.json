@@ -1,0 +1,20 @@
+﻿{
+	"config.EnabledBuildings.name": "Enabled Buildings",
+	"config.EnabledBuildings.desc": "Change which buildings from this mod are available",
+	"buildings.Alveary.name": "Alveary",
+	"buildings.Alveary.desc": "Home for a large hive of bees. Produces honey every day for every nearby flower.",
+	"buildings.LightningRod.name": "Lightning Attractor",
+	"buildings.LightningRod.desc": "A metal tower capable of absorbing an entire storm. Catches all lightning strikes.",
+	"buildings.FieldStone.name": "Field Stone",
+	"buildings.FieldStone.desc": "An enchanted stone which improves nearby crops and prevents soil from drying out.",
+	"buildings.Stockpile.name": "Stockpile",
+	"buildings.Stockpile.desc": "A building that stores a large amount of items",
+	"buildings.BigStockpile.name": "Big Stockpile",
+	"buildings.BigStockpile.desc": "A building that stores a huge amount of items",
+	"buildings.DeluxeStockpile.name": "Deluxe Stockpile",
+	"buildings.DeluxeStockpile.desc": "A building that stores a truly colossal amount of items",
+	"buildings.OminousEffigy.name": "Ominous Effigy",
+	"buildings.OminousEffigy.desc": "A reservoir of sinister magic that frightens all birds away from your farm",
+	"buildings.MagicPond.name": "Magic Pond",
+	"buildings.MagicPond.desc": "An enchanted pool from which any fish can be caught"
+}
