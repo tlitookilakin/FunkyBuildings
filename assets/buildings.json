@@ -4,7 +4,7 @@
 		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Alveary.desc]",
 		"Texture": "Mods/tlitookilakin.FunkyBuildings/Alveary",
 		"BuildingType": "FunkyBuildings.Buildings.Alveary",
-		"Builder": "Robin",
+		"Builder": "IslandBird",
 		"BuildCost": 20000,
 		"BuildMaterials": [
 			{ "Id": "hardwood", "ItemId": "(O)709", "Amount": 50 },
@@ -12,7 +12,6 @@
 			{ "Id": "gold", "ItemId": "(O)336", "Amount": 5 }
 		],
 		"BuildDays": 2,
-		"BuildCondition": "PLAYER_FARMING_LEVEL Current 5, PLAYER_HAS_CRAFTING_RECIPE Current Bee House",
 		"Size": { "X": 3, "Y": 3 },
 		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 80 },
 		"SeasonOffset": { "X": 48, "Y": 0 },
