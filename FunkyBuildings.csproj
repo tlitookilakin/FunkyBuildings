@@ -22,7 +22,7 @@
 	<ItemGroup>
 		<PackageReference Include="Leclair.Stardew.ModManifestBuilder" Version="2.4.1" />
 		<PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
-		<PackageReference Include="tlitookilakin.StarModGen" Version="0.2.5" ExcludeAssets="runtime" />
+		<PackageReference Include="tlitookilakin.StarModGen" Version="0.2.7" ExcludeAssets="runtime" />
 		<Reference Include="SpaceCore">
 			<HintPath>$(GameModsPath)\SpaceCore\SpaceCore.dll</HintPath>
 			<Private>false</Private>
@@ -33,6 +33,7 @@
 	<ItemGroup>
 		<AdditionalFiles Include="assets/buildings.json" GameAssetMerge="Data/Buildings" />
 		<AdditionalFiles Include="assets/exteriors/alveary.png" GameAssetLoad="/Alveary" />
+		<AdditionalFiles Include="assets/exteriors/arborealcloche.png" GameAssetLoad="/ArborealCloche" />
 		<AdditionalFiles Include="assets/exteriors/field_stone.png" GameAssetLoad="/FieldStone" />
 		<AdditionalFiles Include="assets/exteriors/lightning_rod.png" GameAssetLoad="/LightningRod" />
 	</ItemGroup>

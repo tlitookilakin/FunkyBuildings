@@ -7,26 +7,121 @@
 		"Builder": "IslandBird",
 		"BuildCost": 20000,
 		"BuildMaterials": [
-			{ "Id": "hardwood", "ItemId": "(O)709", "Amount": 50 },
-			{ "Id": "honey", "ItemId": "(O)340", "Amount": 28 },
-			{ "Id": "gold", "ItemId": "(O)336", "Amount": 5 }
+			{
+				"Id": "hardwood",
+				"ItemId": "(O)709",
+				"Amount": 50
+			},
+			{
+				"Id": "honey",
+				"ItemId": "(O)340",
+				"Amount": 14
+			},
+			{
+				"Id": "gold",
+				"ItemId": "(O)336",
+				"Amount": 5
+			}
 		],
 		"BuildDays": 2,
-		"Size": { "X": 3, "Y": 3 },
-		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 80 },
-		"SeasonOffset": { "X": 48, "Y": 0 },
+		"Size": {
+			"X": 3,
+			"Y": 3
+		},
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 48,
+			"Height": 80
+		},
+		"SeasonOffset": {
+			"X": 48,
+			"Y": 0
+		},
 		"DrawLayers": [
-			{ 
-				"Id": "honey", 
-				"SourceRect": {"X": 0, "Y": 80, "Width": 48, "Height": 80}, 
+			{
+				"Id": "honey",
+				"SourceRect": {
+					"X": 0,
+					"Y": 80,
+					"Width": 48,
+					"Height": 80
+				},
 				"OnlyDrawIfChestHasContents": "Output",
 				"DrawPosition": "0, 0"
 			}
 		],
 		"Chests": [
-			{ "Id": "Output", "Type": "Collect" }
+			{
+				"Id": "Output",
+				"Type": "Collect"
+			}
 		],
 		"DefaultAction": "BuildingChest Output"
+	},
+	"ArborealCloche": {
+		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.ArborealCloche.name]",
+		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.ArborealCloche.desc]",
+		"Texture": "Mods/tlitookilakin.FunkyBuildings/ArborealCloche",
+		"BuildingType": "FunkyBuildings.Buildings.ArborealCloche, FunkyBuildings",
+		"Builder": "IslandBird",
+		"BuildCost": 5000,
+		"BuildMaterials": [
+			{
+				"Id": "wood",
+				"ItemId": "(O)388",
+				"Amount": 100
+			},
+			{
+				"Id": "crystal",
+				"ItemId": "(O)338",
+				"Amount": 10
+			},
+			{
+				"Id": "moss",
+				"ItemId": "(O)Moss",
+				"Amount": 10
+			}
+		],
+		"BuildDays": 1,
+		"Size": {
+			"X": 3,
+			"Y": 3
+		},
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 48,
+			"Height": 96
+		},
+		"SeasonOffset": {
+			"X": 48,
+			"Y": 0
+		},
+		"DrawLayers": [
+			{
+				"Id": "floor",
+				"SourceRect": {
+					"X": 0,
+					"Y": 96,
+					"Width": 48,
+					"Height": 48
+				},
+				"DrawPosition": {
+					"X": 0,
+					"Y": 48
+				},
+				"DrawInBackground": true
+			}
+		],
+		"Chests": [
+			{
+				"Id": "Output",
+				"Type": "Chest"
+			}
+		],
+		"FadeWhenBehind": false,
+		"DrawShadow": false
 	},
 	"LightningRod": {
 		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.LightningRod.name]",
@@ -36,31 +131,78 @@
 		"Builder": "Robin",
 		"BuildCost": 100000,
 		"BuildMaterials": [
-			{ "Id": "iron", "ItemId": "(O)335", "Amount": 20 },
-			{ "Id": "quartz", "ItemId": "(O)338", "Amount": 20 },
-			{ "Id": "iridium", "ItemId": "(O)337", "Amount": 10 }
+			{
+				"Id": "iron",
+				"ItemId": "(O)335",
+				"Amount": 20
+			},
+			{
+				"Id": "quartz",
+				"ItemId": "(O)338",
+				"Amount": 20
+			},
+			{
+				"Id": "iridium",
+				"ItemId": "(O)337",
+				"Amount": 10
+			}
 		],
 		"BuildDays": 2,
 		"BuildCondition": "LOCATION_NAME Target Farm, !BUILDINGS_CONSTRUCTED Target tlitookilakin.FunkyBuildings_LightningRod 1",
-		"Size": { "X": 3, "Y": 1 },
-		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 128 },
-		"SeasonOffset": { "X": 48, "Y": 0 },
+		"Size": {
+			"X": 3,
+			"Y": 1
+		},
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 48,
+			"Height": 128
+		},
+		"SeasonOffset": {
+			"X": 48,
+			"Y": 0
+		},
 		"Chests": [
-			{ "Id": "Input", "Type": "Chest" },
-			{ "Id": "Output", "Type": "Collect", "DisplayTile": "1, 1", "DisplayHeight": 0 }
+			{
+				"Id": "Input",
+				"Type": "Chest"
+			},
+			{
+				"Id": "Output",
+				"Type": "Collect",
+				"DisplayTile": "1, 1",
+				"DisplayHeight": 0
+			}
 		],
 		"DrawLayers": [
 			{
 				"Id": "BirdTop",
-				"SourceRect": { "X": 0, "Y": 144, "Width": 16, "Height": 16 },
-				"DrawPosition": { "X": 16, "Y": 44 },
+				"SourceRect": {
+					"X": 0,
+					"Y": 144,
+					"Width": 16,
+					"Height": 16
+				},
+				"DrawPosition": {
+					"X": 16,
+					"Y": 44
+				},
 				"FrameCount": 3,
 				"FrameDuration": 578764
 			},
 			{
 				"Id": "BirdBottom",
-				"SourceRect": { "X": 0, "Y": 128, "Width": 16, "Height": 16 },
-				"DrawPosition": { "X": 23, "Y": 82 },
+				"SourceRect": {
+					"X": 0,
+					"Y": 128,
+					"Width": 16,
+					"Height": 16
+				},
+				"DrawPosition": {
+					"X": 23,
+					"Y": 82
+				},
 				"FrameCount": 3,
 				"FrameDuration": 338437
 			}
@@ -76,15 +218,38 @@
 		"Builder": "Wizard",
 		"BuildCost": 1000000,
 		"BuildMaterials": [
-			{ "Id": "void essence", "ItemId": "(O)769", "Amount": 60 },
-			{ "Id": "bone", "ItemId": "(O)881", "Amount": 20 },
-			{ "Id": "tar", "ItemId": "(O)726", "Amount": 10 }
+			{
+				"Id": "void essence",
+				"ItemId": "(O)769",
+				"Amount": 60
+			},
+			{
+				"Id": "bone",
+				"ItemId": "(O)881",
+				"Amount": 20
+			},
+			{
+				"Id": "tar",
+				"ItemId": "(O)726",
+				"Amount": 10
+			}
 		],
 		"BuildDays": 0,
 		"BuildCondition": "LOCATION_NAME Target Farm, !BUILDINGS_CONSTRUCTED Target tlitookilakin.FunkyBuildings_OminousEffigy 1, PLAYER_HAS_MAIL Any RarecrowSociety",
-		"Size": { "X": 3, "Y": 3 },
-		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 160 },
-		"SeasonOffset": { "X": 48, "Y": 0 },
+		"Size": {
+			"X": 3,
+			"Y": 3
+		},
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 48,
+			"Height": 160
+		},
+		"SeasonOffset": {
+			"X": 48,
+			"Y": 0
+		},
 		"DefaultAction": "tlitookilakin.FunkyBuildings_OminousEffigy",
 		"MagicalBuilding": true
 	},
@@ -95,13 +260,36 @@
 		"Builder": "Wizard",
 		"BuildCost": 20000,
 		"BuildMaterials": [
-			{"ID": "quartz", "ItemId": "(O)338", "Amount": 10},
-			{"ID": "gemberry", "ItemId": "(O)417", "Amount": 1},
-			{"ID": "fairydust", "ItemId": "(O)872", "Amount": 1}
+			{
+				"ID": "quartz",
+				"ItemId": "(O)338",
+				"Amount": 10
+			},
+			{
+				"ID": "gemberry",
+				"ItemId": "(O)417",
+				"Amount": 1
+			},
+			{
+				"ID": "fairydust",
+				"ItemId": "(O)872",
+				"Amount": 1
+			}
 		],
-		"Size": {"X": 2, "Y": 2},
-		"SourceRect": {"X": 0, "Y": 0, "Width": 32, "Height": 80},
-		"SeasonOffset": {"X": 32, "Y": 0}
+		"Size": {
+			"X": 2,
+			"Y": 2
+		},
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 32,
+			"Height": 80
+		},
+		"SeasonOffset": {
+			"X": 32,
+			"Y": 0
+		}
 	},
 	"Stockpile": {
 		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Stockpile.name]",
@@ -110,18 +298,41 @@
 		"Builder": "Robin",
 		"BuildCost": 10000,
 		"BuildMaterials": [
-			{ "Id": "wood", "ItemId": "(O)388", "Amount": 500 },
-			{ "Id": "stone", "ItemId": "(O)390", "Amount": 200 },
-			{ "Id": "iron", "ItemId": "(O)335", "Amount": 10 }
+			{
+				"Id": "wood",
+				"ItemId": "(O)388",
+				"Amount": 500
+			},
+			{
+				"Id": "stone",
+				"ItemId": "(O)390",
+				"Amount": 200
+			},
+			{
+				"Id": "iron",
+				"ItemId": "(O)335",
+				"Amount": 10
+			}
 		],
 		"BuildDays": 1,
-		"Size": { "X": 3, "Y": 3 },
-		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 80 },
-		"ModData":  {
+		"Size": {
+			"X": 3,
+			"Y": 3
+		},
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 48,
+			"Height": 80
+		},
+		"ModData": {
 			"tlitookilakin.FunkyBuildings_Capacity": "300"
 		},
 		"Chests": [
-			{ "Id": "storage", "Type": "Chest" }
+			{
+				"Id": "storage",
+				"Type": "Chest"
+			}
 		],
 		"DefaultAction": "tlitookilakin.FunkyBuildings_OpenStockpile"
 	},
@@ -133,18 +344,41 @@
 		"BuildCost": 25000,
 		"BuildingToUpgrade": "tlitookilakin.FunkyBuildings_Stockpile",
 		"BuildMaterials": [
-			{ "Id": "hardwood", "ItemId": "(O)709", "Amount": 100 },
-			{ "Id": "stone", "ItemId": "(O)390", "Amount": 300 },
-			{ "Id": "iron", "ItemId": "(O)335", "Amount": 10 }
+			{
+				"Id": "hardwood",
+				"ItemId": "(O)709",
+				"Amount": 100
+			},
+			{
+				"Id": "stone",
+				"ItemId": "(O)390",
+				"Amount": 300
+			},
+			{
+				"Id": "iron",
+				"ItemId": "(O)335",
+				"Amount": 10
+			}
 		],
 		"BuildDays": 1,
-		"Size": { "X": 3, "Y": 3 },
-		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 80 },
-		"ModData":  {
+		"Size": {
+			"X": 3,
+			"Y": 3
+		},
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 48,
+			"Height": 80
+		},
+		"ModData": {
 			"tlitookilakin.FunkyBuildings_Capacity": "600"
 		},
 		"Chests": [
-			{ "Id": "storage", "Type": "Chest" }
+			{
+				"Id": "storage",
+				"Type": "Chest"
+			}
 		],
 		"DefaultAction": "tlitookilakin.FunkyBuildings_OpenStockpile"
 	},
@@ -156,18 +390,41 @@
 		"BuildCost": 40000,
 		"BuildingToUpgrade": "tlitookilakin.FunkyBuildings_BigStockpile",
 		"BuildMaterials": [
-			{ "Id": "hardwood", "ItemId": "(O)709", "Amount": 150 },
-			{ "Id": "stone", "ItemId": "(O)390", "Amount": 300 },
-			{ "Id": "iron", "ItemId": "(O)335", "Amount": 15 }
+			{
+				"Id": "hardwood",
+				"ItemId": "(O)709",
+				"Amount": 150
+			},
+			{
+				"Id": "stone",
+				"ItemId": "(O)390",
+				"Amount": 300
+			},
+			{
+				"Id": "iron",
+				"ItemId": "(O)335",
+				"Amount": 15
+			}
 		],
 		"BuildDays": 1,
-		"Size": { "X": 3, "Y": 3 },
-		"SourceRect": { "X": 0, "Y": 0, "Width": 48, "Height": 80 },
-		"ModData":  {
+		"Size": {
+			"X": 3,
+			"Y": 3
+		},
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 48,
+			"Height": 80
+		},
+		"ModData": {
 			"tlitookilakin.FunkyBuildings_Capacity": "900"
 		},
 		"Chests": [
-			{ "Id": "storage", "Type": "Chest" }
+			{
+				"Id": "storage",
+				"Type": "Chest"
+			}
 		],
 		"DefaultAction": "tlitookilakin.FunkyBuildings_OpenStockpile"
 	},
@@ -179,16 +436,41 @@
 		"Builder": "Wizard",
 		"BuildCost": 100000,
 		"BuildMaterials": [
-			{ "Id": "iridium", "ItemId": "(O)337", "Amount": 3 },
-			{ "Id": "pearl", "ItemId": "(O)797", "Amount": 1 },
-			{ "Id": "stone", "ItemId": "(O)390", "Amount": 200 }
+			{
+				"Id": "iridium",
+				"ItemId": "(O)337",
+				"Amount": 3
+			},
+			{
+				"Id": "pearl",
+				"ItemId": "(O)797",
+				"Amount": 1
+			},
+			{
+				"Id": "stone",
+				"ItemId": "(O)390",
+				"Amount": 200
+			}
 		],
-		"Size": { "X": 5, "Y": 5 },
-		"SourceRect": { "X": 0, "Y": 0, "Width": 80, "Height": 96 },
+		"Size": {
+			"X": 5,
+			"Y": 5
+		},
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 80,
+			"Height": 96
+		},
 		"DrawLayers": [
-			{ 
-				"Id": "underwater", 
-				"SourceRect": {"X": 80, "Y": 0, "Width": 80, "Height": 80}, 
+			{
+				"Id": "underwater",
+				"SourceRect": {
+					"X": 80,
+					"Y": 0,
+					"Width": 80,
+					"Height": 80
+				},
 				"DrawPosition": "0, 0",
 				"DrawInBackground": true
 			}
@@ -199,7 +481,12 @@
 				"Name": "Water",
 				"Value": "T",
 				"Layer": "Buildings",
-				"TileArea": {"X": 0, "Y": 0, "Width": 5, "Height": 5}
+				"TileArea": {
+					"X": 0,
+					"Y": 0,
+					"Width": 5,
+					"Height": 5
+				}
 			}
 		]
 	}

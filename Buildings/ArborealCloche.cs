@@ -1,4 +1,5 @@
 ﻿using FunkyBuildings.Framework;
+using FunkyBuildings.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Netcode;
@@ -52,6 +53,17 @@ public class ArborealCloche : Building
 		return true;
 	}
 
+    public override bool isActionableTile(int xTile, int yTile, Farmer who)
+    {
+		if (base.isActionableTile(xTile, yTile, who))
+			return true;
+
+		if (this.GetBounds().Contains(xTile, yTile))
+			return true;
+
+		return false;
+    }
+
 	protected override void initNetFields()
 	{
 		base.initNetFields();
@@ -86,6 +98,8 @@ public class ArborealCloche : Building
 	{
 		if (who != Game1.player)
 			return;
+
+		Game1.activeClickableMenu = new ClocheMenu(this);
 	}
 
 	public override void draw(SpriteBatch b)
@@ -106,7 +120,7 @@ public class ArborealCloche : Building
 		var output = GetBuildingChest("Output");
 		if (output is null)
 		{
-			Print.Warn($"Chests mangled for aboreal cloche @ {tileX}, {tileY}, {GetParentLocation()?.DisplayName}");
+			Print.Warn($"Chests mangled for arboreal cloche @ {tileX}, {tileY}, {GetParentLocation()?.DisplayName}");
 			return;
 		}
 
@@ -152,7 +166,8 @@ public class ArborealCloche : Building
 		}
 	}
 
-	~ArborealCloche() {
+	~ArborealCloche()
+	{
 		if (Tree is FruitTree ft)
 			clochedTrees.Remove(ft);
 	}

@@ -1,4 +1,5 @@
 ﻿using FunkyBuildings.Data;
+using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StarModGen.Lib;
 
@@ -10,6 +11,9 @@ namespace FunkyBuildings.Framework
 
 		[Asset("/BuildingData")]
 		public partial ExtraData BuildingData { get; }
+
+		[Asset("/UI/Cloche", "assets/ui/cloche.png")]
+		public partial Texture2D ClocheUI { get; }
 
 		[AssetEntry]
 		public partial void Entry(IModHelper helper);

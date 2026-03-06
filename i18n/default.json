@@ -3,6 +3,8 @@
 	"config.EnabledBuildings.desc": "Change which buildings from this mod are available",
 	"buildings.Alveary.name": "Alveary",
 	"buildings.Alveary.desc": "Home for a large hive of bees. Produces honey every day for every nearby flower.",
+	"buildings.ArborealCloche.name": "Arboreal Cloche",
+	"buildings.ArborealCloche.desc": "Shelters a single tree, allowing it to grow all year and automatically harvesting its fruit.",
 	"buildings.LightningRod.name": "Lightning Attractor",
 	"buildings.LightningRod.desc": "A metal tower capable of absorbing an entire storm. Catches all lightning strikes.",
 	"buildings.FieldStone.name": "Field Stone",

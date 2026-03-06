@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using StardewModdingAPI;
-using StardewModdingAPI.Utilities;
+using Microsoft.Xna.Framework.Graphics;
+using StardewValley;
 using StardewValley.Buildings;
 
 namespace FunkyBuildings.Framework
@@ -15,5 +15,16 @@ namespace FunkyBuildings.Framework
 
 		public static Rectangle GetBounds(this Building b)
 			=> new(b.tileX.Value, b.tileY.Value, b.tilesWide.Value, b.tilesHigh.Value);
+
+		public static void Draw(this TemporaryAnimatedSpriteList list, SpriteBatch b, GameTime time, bool local = false)
+		{
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+				if (list[i].update(time))
+					list.RemoveAt(i);
+				else
+					list[i].draw(b, local);
+            }
+        }
 	}
 }
