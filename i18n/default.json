@@ -18,5 +18,7 @@
 	"buildings.OminousEffigy.name": "Ominous Effigy",
 	"buildings.OminousEffigy.desc": "A reservoir of sinister magic that frightens all birds away from your farm",
 	"buildings.MagicPond.name": "Magic Pond",
-	"buildings.MagicPond.desc": "An enchanted pool from which any fish can be caught"
+	"buildings.MagicPond.desc": "An enchanted pool from which any fish can be caught",
+	"buildings.Mailbox.name": "Mailbox",
+	"buildings.Mailbox.desc": "Collects mail for you"
 }

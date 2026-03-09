@@ -59,6 +59,64 @@
 		],
 		"DefaultAction": "BuildingChest Output"
 	},
+	"IslandFarmhouse": {
+		"Name": "Island Farmhouse",
+		"Description": "The island farmhouse",
+		"Texture": "Maps/island_tilesheet_1",
+		"Builder": null,
+		"Size": {
+			"X": 7,
+			"Y": 5
+		},
+		"SourceRect": {
+			"X": 112,
+			"Y": 496,
+			"Width": 111,
+			"Height": 144
+		},
+		"CollisionMap": "XXXXXXX\nXXXXXXX\nXXXXXXX\nXOOOOOX\nXXOOOXX",
+		"HumanDoor": {
+			"X": 3,
+			"Y": 2
+		},
+		"DrawShadow": false,
+		"NonInstancedIndoorLocation": "IslandFarmHouse"
+	},
+	"IslandFarmObelisk": {
+		"Name": "Farm Obelisk",
+		"Description": "Farm warp obelisk",
+		"Texture": "Maps/Farm Obelisk",
+		"Builder": null,
+		"Size": {
+			"X": 3,
+			"Y": 2
+		},
+		"SourceRect": {
+			"X": 48,
+			"Y": 144
+		},
+		"DrawShadow": false,
+		"DefaultAction": "FarmObelisk"
+	},
+	"Mailbox": {
+		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Mailbox.name]",
+		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Mailbox.desc]",
+		"Texture": "Buildings/Mailbox",
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 16,
+			"Height": 32
+		},
+		"Size": {
+			"X": 1,
+			"Y": 1
+		},
+		"BuildingType": "FunkyBuildings.Buildings.Mailbox, FunkyBuildings",
+		"DefaultAction": "Mailbox",
+		"DrawShadow": false,
+		"BuildCost": 500
+	},
 	"ArborealCloche": {
 		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.ArborealCloche.name]",
 		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.ArborealCloche.desc]",
