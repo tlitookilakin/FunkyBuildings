@@ -26,5 +26,26 @@ namespace FunkyBuildings.Framework
 					list[i].draw(b, local);
             }
         }
+
+		public static Effect LoadEffect(string path)
+		{
+			byte[] raw =
+			#if DEBUG
+			File.ReadAllBytes(Path.Join(HotReload.FolderPath, path));
+			#else
+			typeof(ModUtilities).Assembly.GetManifestResourceStream(path.Replace('/', '.').Replace('\\', '.')).ReadAllBytes();
+			#endif
+
+			return new(Game1.graphics.GraphicsDevice, raw);
+		}
+
+		public static byte[] ReadAllBytes(this Stream? s)
+		{
+			if (s is null)
+				return [];
+
+			using var reader = new BinaryReader(s);
+			return reader.ReadBytes((int)s.Length);
+		}
 	}
 }

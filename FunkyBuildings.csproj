@@ -38,4 +38,16 @@
 		<AdditionalFiles Include="assets/exteriors/lightning_rod.png" GameAssetLoad="/LightningRod" />
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(Configuration)' != 'Debug'">
+		<EmbeddedResource Include="assets/**/*.mgfx"/>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<AssemblyMetadata Include="ProjectPath" Value="$(ProjectDir)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="assets\maps\" />
+	</ItemGroup>
+
 </Project>

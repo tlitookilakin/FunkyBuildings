@@ -15,6 +15,10 @@ namespace FunkyBuildings.Framework
 		[Asset("/UI/Cloche", "assets/ui/cloche.png")]
 		public partial Texture2D ClocheUI { get; }
 
+		public Effect StoneGlow
+			=> stoneGlow ??= ModUtilities.LoadEffect("assets/effects/stoneglow.mgfx");
+		private Effect? stoneGlow;
+
 		[AssetEntry]
 		public partial void Entry(IModHelper helper);
 
@@ -23,6 +27,11 @@ namespace FunkyBuildings.Framework
 		{
 			assets = new();
 			assets.Entry(ev.Helper);
+		}
+
+		public void ReloadShaders()
+		{
+			stoneGlow = null;
 		}
 	}
 }

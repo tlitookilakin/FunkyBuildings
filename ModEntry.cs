@@ -19,6 +19,7 @@ namespace FunkyBuildings
 		public override void Entry(IModHelper helper)
 		{
 			Print = new(Monitor);
+			HotReload.Init(helper, this);
 			Debug.Init(helper);
 			EventBus.Register(helper);
 

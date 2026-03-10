@@ -78,13 +78,13 @@ internal class VanillaIslandBuildings
 	[ModEvent]
 	internal static void HandleAsset(object? s, AssetRequestedEventArgs e)
 	{
-		if (e.NameWithoutLocale.IsEquivalentTo("Maps/Island_W"))
+		if (e.NameWithoutLocale.IsEquivalentTo("Maps/Island_House_Restored"))
 			e.Edit(EditIslandFarm, AssetEditPriority.Late);
 	}
 
 	private static void EditIslandFarm(IAssetData data)
 	{
 		var map = data.AsMap();
-		map.PatchMap(helper.ModContent.Load<Map>("assets/maps/island_house_patch.tmx"), targetArea: new(80, 41, 7, 2), patchMode: PatchMapMode.ReplaceByLayer);
+		map.PatchMap(helper.ModContent.Load<Map>("assets/maps/island_house_patch.tmx"), targetArea: new(0, 8, 7, 2), patchMode: PatchMapMode.ReplaceByLayer);
 	}
 }
