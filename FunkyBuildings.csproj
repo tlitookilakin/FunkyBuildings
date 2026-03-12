@@ -6,6 +6,7 @@
 		<Nullable>enable</Nullable>
 		<enableharmony>true</enableharmony>
 		<LangVersion>Latest</LangVersion>
+		<IgnoreModFilePatterns>\.fx$,\.pdn$</IgnoreModFilePatterns>
 	</PropertyGroup>
 	
 	<PropertyGroup>
