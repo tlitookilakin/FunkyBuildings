@@ -36,6 +36,7 @@
 		<AdditionalFiles Include="assets/exteriors/arborealcloche.png" GameAssetLoad="/ArborealCloche" />
 		<AdditionalFiles Include="assets/exteriors/field_stone.png" GameAssetLoad="/FieldStone" />
 		<AdditionalFiles Include="assets/exteriors/lightning_rod.png" GameAssetLoad="/LightningRod" />
+		<Shaders Include="assets/**/*.fx" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(Configuration)' != 'Debug'">
@@ -46,8 +47,8 @@
 		<AssemblyMetadata Include="ProjectPath" Value="$(ProjectDir)" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="assets\maps\" />
-	</ItemGroup>
+	<Target Name="CompileShaders" Inputs="@(Shaders)" AfterTargets="Compile" Outputs="@(Shaders -> '%(RelativeDir)%(filename).mgfx')">
+		<Exec Command="mgfxc %(Shaders.FullPath) %(Shaders.RelativeDir)%(Shaders.filename).mgfx" ConsoleToMsBuild="true" />
+	</Target>
 
 </Project>
