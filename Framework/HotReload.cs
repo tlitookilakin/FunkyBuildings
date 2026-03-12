@@ -43,6 +43,9 @@ internal static class HotReload
 		SourceFolder = path;
 		destPath = help.DirectoryPath;
 
+		if (sourcePath[^1] == Path.DirectorySeparatorChar)
+			sourcePath = sourcePath[..^1];
+
 		Print.Log($"Debug mode: mirroring files from {sourcePath} to {destPath} ...");
 
 		watcher = new(Path.Join(sourcePath));

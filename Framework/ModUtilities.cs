@@ -18,14 +18,14 @@ namespace FunkyBuildings.Framework
 
 		public static void Draw(this TemporaryAnimatedSpriteList list, SpriteBatch b, GameTime time, bool local = false)
 		{
-            for (int i = list.Count - 1; i >= 0; i--)
-            {
+			for (int i = list.Count - 1; i >= 0; i--)
+			{
 				if (list[i].update(time))
 					list.RemoveAt(i);
 				else
 					list[i].draw(b, local);
-            }
-        }
+			}
+		}
 
 		public static Effect LoadEffect(string path)
 		{
