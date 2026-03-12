@@ -14,8 +14,7 @@ namespace FunkyBuildings.Framework
 		internal static void Init(object? _, SetupEventArgs e)
 		{
 			e.Harmony
-				.With<Farmer>(nameof(Farmer.addItemToInventoryBool)).Prefix(ProxyToInventory)
-				.With(nameof(Farmer.isMoving)).Postfix(HideMovementIfProxied);
+				.With<Farmer>(nameof(Farmer.addItemToInventoryBool)).Prefix(ProxyToInventory);
 		}
 
 		public InventoryProxy(IInventory store, int limit = 0)
@@ -97,8 +96,5 @@ namespace FunkyBuildings.Framework
 
 			return false;
 		}
-
-		private static bool HideMovementIfProxied(bool moving)
-			=> moving && proxied is null;
 	}
 }

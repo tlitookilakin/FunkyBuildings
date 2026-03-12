@@ -46,8 +46,10 @@ namespace FunkyBuildings.Buildings
 		{
 			if (machine.IsConsideredReadyMachineForComputer())
 			{
+				bool wasHalted = Game1.haltAfterCheck;
 				using var proxy = new InventoryProxy(output);
 				CheckMachine(machine, who, false);
+				Game1.haltAfterCheck = wasHalted;
 			}
 
 			if (machine.HasContextTag("machine_input") && (machine.heldObject.Value is null || (machine.heldObject.Value is Chest c && c.isEmpty())))

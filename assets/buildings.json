@@ -316,6 +316,7 @@
 		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.FieldStone.desc]",
 		"Texture": "Mods/tlitookilakin.FunkyBuildings/FieldStone",
 		"Builder": "Wizard",
+		"BuildingType": "FunkyBuildings.Buildings.FieldStone, FunkyBuildings",
 		"BuildCost": 20000,
 		"BuildMaterials": [
 			{

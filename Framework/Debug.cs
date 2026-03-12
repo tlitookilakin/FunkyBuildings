@@ -2,22 +2,27 @@
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Extensions;
+using StardewValley.Menus;
 using StardewValley.Objects;
+using StarModGen.Lib;
 using System.Diagnostics;
 
 namespace FunkyBuildings.Framework
 {
 	internal static class Debug
 	{
-		[Conditional("DEBUG")]
-		public static void Init(IModHelper help)
+		[ModEvent]
+		public static void Init(object? s, SetupEventArgs e)
 		{
 			#if DEBUG
 
-			helper = help;
-			help.ConsoleCommands.Add("fb_debug", "debug command", DoDebug);
+			helper = e.Helper;
+			helper.ConsoleCommands.Add("fb_debug", "debug command", DoDebug);
+			helper.ConsoleCommands.Add("fb_construct", "show free construction menu", ShowDebugConstruct);
             HotReload.SourceFileChanged += SourceChanged;
-            HotReload.FileUpdated += FileUpdated; ;
+            HotReload.FileUpdated += FileUpdated;
+			e.Harmony
+				.With<CarpenterMenu>(nameof(CarpenterMenu.DoesFarmerHaveEnoughResourcesToBuild)).Postfix(ForceFree);
 
 			#endif
 		}
@@ -26,11 +31,25 @@ namespace FunkyBuildings.Framework
 
         private static readonly Chest chest = new();
 		private static IModHelper helper = null!;
+		private static bool ShouldBeFree = false;
+
+		private static bool ForceFree(bool result)
+			=> result || ShouldBeFree;
 
 		private static void DoDebug(string cmd, string[] args)
 		{
 			Game1.activeClickableMenu = new StockpileMenu(chest, 120);
-			var test = Assets.assets.StoneGlow;
+		}
+
+		private static void ShowDebugConstruct(string cmd, string[] args)
+		{
+			if (args.Length == 0)
+				return;
+
+			ShouldBeFree = true;
+			var menu = new CarpenterMenu(args[0], Game1.currentLocation);
+			menu.behaviorBeforeCleanup += (s) => ShouldBeFree = false;
+			Game1.activeClickableMenu = menu;
 		}
 
 		private static void SourceChanged(string file)

@@ -20,7 +20,6 @@ namespace FunkyBuildings
 		{
 			Print = new(Monitor);
 			HotReload.Init(helper, this);
-			Debug.Init(helper);
 			EventBus.Register(helper);
 
 			Setup?.Invoke(this, new(this, Config.Init(ModManifest, Helper)));
