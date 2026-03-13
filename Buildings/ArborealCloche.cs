@@ -4,15 +4,15 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Netcode;
 using StardewValley;
-using StardewValley.Buildings;
 using StardewValley.TerrainFeatures;
+using StarModGen.Lib;
 using System.Xml.Serialization;
 using SObject = StardewValley.Object;
 
 namespace FunkyBuildings.Buildings;
 
 [XmlType("Mods_" + MOD_ID + "ArborealCloche")]
-public class ArborealCloche : Building
+public class ArborealCloche : EffectBuilding
 {
 	private static readonly HashSet<FruitTree> clochedTrees = [];
 
@@ -38,8 +38,25 @@ public class ArborealCloche : Building
 		}
 	}
 
-	public ArborealCloche() : base() { }
-	public ArborealCloche(Vector2 tile) : base(MOD_ID + "_AborealCloche", tile) { }
+	private static RenderTarget2D? _buffer;
+	private static int _lastTick;
+
+    protected override RenderTarget2D? buffer
+	{
+		get => _buffer;
+		set => _buffer = value;
+	}
+
+    protected override int lastDrawTick
+	{
+		get => _lastTick;
+		set => _lastTick = value;
+	}
+
+    protected override bool verticalOffset => false;
+
+    public ArborealCloche() : base() { }
+	public ArborealCloche(Vector2 tile) : base(tile, MOD_ID + "_AborealCloche") { }
 
 	public override bool doAction(Vector2 tileLocation, Farmer who)
 	{
@@ -166,7 +183,37 @@ public class ArborealCloche : Building
 		}
 	}
 
-	~ArborealCloche()
+    protected override Effect GetEffect()
+    {
+		return Assets.assets.GlassBeams;
+    }
+
+    protected override void UpdateParams(Effect effect)
+    {
+		effect.Parameters["Offset"].SetValue(Game1.viewport.Location.ToVector());
+    }
+
+	[ModEvent]
+	internal static void Init(object? _, SetupEventArgs e)
+	{
+		e.Harmony
+			.With<FruitTree>(nameof(FruitTree.IsGrowthBlocked)).Postfix(IsGrowthBlocked)
+			.With(nameof(FruitTree.IsInSeasonHere)).Postfix(IsInSeason);
+	}
+
+	private static bool IsGrowthBlocked(bool blocked, FruitTree __instance)
+	{
+		if (clochedTrees.Contains(__instance))
+			return false;
+		return blocked;
+	}
+
+	private static bool IsInSeason(bool inSeason, FruitTree __instance)
+	{
+		return inSeason || clochedTrees.Contains(__instance);
+	}
+
+    ~ArborealCloche()
 	{
 		if (Tree is FruitTree ft)
 			clochedTrees.Remove(ft);

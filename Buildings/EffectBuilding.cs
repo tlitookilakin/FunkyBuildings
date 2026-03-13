@@ -9,11 +9,11 @@ namespace FunkyBuildings.Buildings;
 public abstract class EffectBuilding : Building
 {
 	protected abstract RenderTarget2D? buffer { get; set; }
-	protected abstract SpriteBatch? bufferBatch { get; set; }
 	protected abstract Effect GetEffect();
 	protected abstract int lastDrawTick { get; set; }
 	protected abstract bool verticalOffset { get; }
 	protected abstract void UpdateParams(Effect effect);
+	protected static SpriteBatch? bufferBatch;
 
 	public EffectBuilding() : base () { }
 	public EffectBuilding(Vector2 tile, string id) : base(id, tile) { }

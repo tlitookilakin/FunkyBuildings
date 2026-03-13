@@ -47,5 +47,8 @@ namespace FunkyBuildings.Framework
 			using var reader = new BinaryReader(s);
 			return reader.ReadBytes((int)s.Length);
 		}
+
+		public static Vector2 ToVector(this xTile.Dimensions.Location loc)
+			=> new(loc.X, loc.Y);
 	}
 }

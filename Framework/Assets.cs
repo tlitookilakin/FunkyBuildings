@@ -19,6 +19,10 @@ namespace FunkyBuildings.Framework
 			=> stoneGlow ??= ModUtilities.LoadEffect("assets/effects/stoneglow.mgfx");
 		private Effect? stoneGlow;
 
+		public Effect GlassBeams
+			=> glassBeams ??= ModUtilities.LoadEffect("assets/effects/glassbeams.mgfx");
+		private Effect? glassBeams;
+
 		[AssetEntry]
 		public partial void Entry(IModHelper helper);
 
@@ -32,6 +36,7 @@ namespace FunkyBuildings.Framework
 		public void ReloadShaders()
 		{
 			stoneGlow = null;
+			glassBeams = null;
 		}
 	}
 }

@@ -15,7 +15,6 @@ public class FieldStone : EffectBuilding
 	const string ID = MOD_ID + "_" + nameof(FieldStone);
 	private static readonly Dictionary<GameLocation, List<Rectangle>> LocationBuildingCache = [];
 	private static int _lastDrawTick;
-	private static SpriteBatch? _batch;
 	private static RenderTarget2D? _buffer;
 
 	private readonly NetInt radius = new();
@@ -36,12 +35,6 @@ public class FieldStone : EffectBuilding
 	{
 		get => _buffer;
 		set => _buffer = value;
-	}
-
-	protected override SpriteBatch? bufferBatch
-	{
-		get => _batch;
-		set => _batch = value;
 	}
 
 	public FieldStone(Vector2 tile) : base(tile, ID) { }

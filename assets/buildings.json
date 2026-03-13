@@ -152,10 +152,6 @@
 			"Width": 48,
 			"Height": 96
 		},
-		"SeasonOffset": {
-			"X": 48,
-			"Y": 0
-		},
 		"DrawLayers": [
 			{
 				"Id": "floor",
@@ -170,6 +166,16 @@
 					"Y": 48
 				},
 				"DrawInBackground": true
+			},
+			{
+				"Id": "back",
+				"SourceRect": {
+					"X": 96,
+					"Y": 0,
+					"Width": 48,
+					"Height": 96
+				},
+				"SortTileOffset": 3
 			}
 		],
 		"Chests": [
