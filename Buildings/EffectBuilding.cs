@@ -13,12 +13,7 @@ public abstract class EffectBuilding : Building
 	protected abstract Effect GetEffect();
 	protected abstract int lastDrawTick { get; set; }
 	protected abstract bool verticalOffset { get; }
-	protected virtual void UpdateParams(Effect effect)
-	{
-		effect.Parameters["Time"].SetValue((float)Game1.currentGameTime.TotalGameTime.TotalSeconds);
-		if (buffer != null)
-			effect.Parameters["Resolution"].SetValue(buffer.Bounds.Size.ToVector2());
-	}
+	protected abstract void UpdateParams(Effect effect);
 
 	public EffectBuilding() : base () { }
 	public EffectBuilding(Vector2 tile, string id) : base(id, tile) { }

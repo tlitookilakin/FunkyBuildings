@@ -24,7 +24,7 @@ public class FieldStone : EffectBuilding
 		get => radius.Value; 
 		set => radius.Value = value;
 	}
-    protected override int lastDrawTick 
+	protected override int lastDrawTick 
 	{ 
 		get => _lastDrawTick; 
 		set => _lastDrawTick = value; 
@@ -32,7 +32,7 @@ public class FieldStone : EffectBuilding
 
 	protected override bool verticalOffset => true;
 
-    protected override RenderTarget2D? buffer
+	protected override RenderTarget2D? buffer
 	{
 		get => _buffer;
 		set => _buffer = value;
@@ -111,8 +111,15 @@ public class FieldStone : EffectBuilding
 		return items;
 	}
 
-    protected override Effect GetEffect()
-    {
+	protected override Effect GetEffect()
+	{
 		return Assets.assets.StoneGlow;
-    }
+	}
+
+	protected override void UpdateParams(Effect effect)
+	{
+		effect.Parameters["Time"].SetValue((float)Game1.currentGameTime.TotalGameTime.TotalSeconds);
+		if (buffer != null)
+			effect.Parameters["Resolution"].SetValue(buffer.Bounds.Size.ToVector2());
+	}
 }
