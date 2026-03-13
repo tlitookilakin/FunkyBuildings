@@ -89,7 +89,8 @@ public class FieldStone : Building
 		src = new(src.X, src.Y + src.Height + data.SeasonOffset.Y * 3, src.Width + data.SeasonOffset.X * 3, src.Height + data.SeasonOffset.Y * 3);
 
 		var effect = Assets.assets.StoneGlow;
-		effect.Parameters["Time"].SetValue((float)Game1.ticks);
+		effect.Parameters["Time"].SetValue((float)Game1.currentGameTime.TotalGameTime.TotalSeconds);
+		effect.Parameters["Resolution"].SetValue(GlowBuffer.Bounds.Size.ToVector2());
 
 		var targets = device.GetRenderTargets();
 
