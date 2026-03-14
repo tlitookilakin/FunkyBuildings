@@ -120,7 +120,10 @@
 			}
 		],
 		"DrawShadow": false,
-		"DefaultAction": "FarmObelisk"
+		"DefaultAction": "FarmObelisk",
+		"CustomFields": {
+			"tlitookilakin.FunkyBuildings_BirdSpots": "0 0 1 0 2 0"
+		}
 	},
 	"Mailbox": {
 		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Mailbox.name]",
