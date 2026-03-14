@@ -20,5 +20,10 @@
 	"buildings.MagicPond.name": "Magic Pond",
 	"buildings.MagicPond.desc": "An enchanted pool from which any fish can be caught",
 	"buildings.Mailbox.name": "Mailbox",
-	"buildings.Mailbox.desc": "Collects mail for you"
+	"buildings.Mailbox.desc": "Collects mail for you",
+	"birdmenu.prompt": "Hmm, what do?",
+	"birdmenu.shop": "Trade",
+	"birdmenu.construct": "Build",
+	"birdmenu.upgrade": "Upgrade",
+	"general.islandFarmName": "Island Farm"
 }

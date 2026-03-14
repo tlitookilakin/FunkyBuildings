@@ -1,4 +1,5 @@
 ﻿using StardewModdingAPI;
+using StardewValley;
 using StardewValley.Extensions;
 using System.Diagnostics;
 using System.Reflection;
@@ -77,6 +78,9 @@ internal static class HotReload
 			return;
 
 		var local = file.Replace(sourcePath, "");
+		if (local.StartsWith(Path.DirectorySeparatorChar))
+			local = local[1..];
+
 		SourceFileChanged?.Invoke(local);
 
 		if (!FileIsWhitelisted(ext))
@@ -84,8 +88,11 @@ internal static class HotReload
 
 		var target = file.Replace(sourcePath, destPath);
 		Directory.CreateDirectory(Path.GetDirectoryName(target) ?? "");
-		File.Copy(file, target, true);
-		FileUpdated?.Invoke(local);
+		DelayedAction.functionAfterDelay(() =>
+		{
+			File.Copy(file, target, true);
+			FileUpdated?.Invoke(local);
+		}, 1);
 	}
 
 #endif

@@ -1,30 +1,34 @@
-﻿using HarmonyLib;
+﻿using FunkyBuildings.Framework;
+using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Netcode;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.BellsAndWhistles;
 using StardewValley.Buildings;
+using StardewValley.Locations;
 using StardewValley.Menus;
 using StardewValley.Mods;
 using StarModGen.Lib;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace FunkyBuildings.Framework;
+namespace FunkyBuildings.Features;
 
 public class BirdConstruction
 {
 	private static readonly List<ParrotUpgradePerch> effects = [];
 	private static readonly AccessTools.FieldRef<Building, NetInt> newTimer 
 		= AccessTools.FieldRefAccess<Building, NetInt>("newConstructionTimer");
+	const string FLAG = MOD_ID + "_IslandFarmhouseUpgraded";
 
 	[ModEvent]
 	internal static void Init(object? _, SetupEventArgs e)
 	{
 		e.Harmony
 			.With<Building>(nameof(Building.performActionOnConstruction)).Postfix(DoBirdEffects)
-			.With<CarpenterMenu>(nameof(CarpenterMenu.robinConstructionMessage)).Prefix(HideRobinYap);
+			.With<CarpenterMenu>(nameof(CarpenterMenu.robinConstructionMessage)).Prefix(HideRobinYap)
+			.With<IslandNorth>(nameof(IslandNorth.checkAction)).Prefix(ReplaceTrader);
 
 		var hook = FindBuildHook(PatchProcessor.GetOriginalInstructions(typeof(CarpenterMenu).GetMethod(nameof(CarpenterMenu.receiveLeftClick))));
 		if (hook != null)
@@ -94,15 +98,6 @@ public class BirdConstruction
 		return menu.Builder is "IslandBird" ? 4500 : original;
 	}
 
-	[ModEvent]
-	internal static void DebugKeyPress(object? s, ButtonReleasedEventArgs e)
-	{
-		if (e.Button is StardewModdingAPI.SButton.OemOpenBrackets) 
-		{
-			Game1.currentLocation?.ShowConstructOptions("IslandBird");
-		}
-	}
-
 	public static void StartConstructionAnimation(Building building, GameLocation? where = null)
 	{
 		var bounds = building.GetBounds();
@@ -159,5 +154,50 @@ public class BirdConstruction
 				}
 			}
 		}
+	}
+
+	private static List<Response> GetBirdOptions()
+	{
+		List<Response> opts = [
+			new("shop", Assets.LoadString("birdmenu.shop")),
+			new("construct", Assets.LoadString("birdmenu.construct"))
+		];
+
+		if (Game1.getLocationFromName("IslandWest") is IslandWest w && w.farmhouseRestored.Value && !Game1.MasterPlayer.mailReceived.Contains(FLAG))
+			opts.Add(new("upgrade", Assets.LoadString("birdmenu.upgrade")));
+
+		return opts;
+	}
+
+	private static void SelectBirdOption(Farmer who, string which)
+	{
+		switch (which)
+		{
+			case "construct":
+				who.currentLocation.ShowConstructOptions("IslandBird");
+				break;
+			case "shop":
+				Utility.TryOpenShopMenu("IslandTrade", null, playOpenSound: true);
+				break;
+			case "upgrade":
+				//todo
+				break;
+		}
+	}
+
+	private static bool ReplaceTrader(GameLocation __instance, xTile.Dimensions.Location tileLocation, ref bool __result)
+	{
+		int tileIndexAt = __instance.getTileIndexAt(tileLocation.X, tileLocation.Y, "Buildings", "untitled tile sheet");
+		if ((uint)(tileIndexAt - 2074) <= 4u)
+		{
+			var opts = GetBirdOptions();
+			opts.Add(new("quit", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_Leave")));
+
+			__instance.createQuestionDialogue(Assets.LoadString("birdmenu.prompt"), [.. opts], SelectBirdOption);
+
+			__result = true;
+			return false;
+		}
+		return true;
 	}
 }

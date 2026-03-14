@@ -41,7 +41,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(Configuration)' != 'Debug'">
-		<EmbeddedResource Include="assets/**/*.mgfx"/>
+		<EmbeddedResource Include="assets/**/*.mgfx" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(Configuration)' == 'Debug'">

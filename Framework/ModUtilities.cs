@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.Buildings;
+using StardewValley.GameData.Buildings;
+using System.Diagnostics.CodeAnalysis;
 
 namespace FunkyBuildings.Framework
 {
@@ -50,5 +52,18 @@ namespace FunkyBuildings.Framework
 
 		public static Vector2 ToVector(this xTile.Dimensions.Location loc)
 			=> new(loc.X, loc.Y);
+
+		public static bool TryGetCustomField(this Building b, string key, [NotNullWhen(true)] out string? value)
+		{
+			value = null;
+
+			if (b.GetData() is not BuildingData data)
+				return false;
+
+			if (data.CustomFields is not Dictionary<string, string> fields)
+				return false;
+
+			return fields.TryGetValue(key, out value);
+		}
 	}
 }

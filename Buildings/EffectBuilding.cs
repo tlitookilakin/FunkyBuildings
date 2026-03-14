@@ -55,6 +55,9 @@ public abstract class EffectBuilding : Building
 
 	protected void DrawEffect(SpriteBatch b, Vector2 position, float depth, BuildingData data, int season = 0, float a = 1f)
 	{
+		if (isUnderConstruction())
+			return;
+
 		if (lastDrawTick != Game1.ticks)
 			UpdateBuffer(texture.Value, data);
 

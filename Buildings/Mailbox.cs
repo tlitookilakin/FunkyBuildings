@@ -9,6 +9,9 @@ namespace FunkyBuildings.Buildings;
 [XmlType("Mods_" + MOD_ID + "_Mailbox")]
 public class Mailbox : Building
 {
+	public Mailbox(Vector2 tile) : base(MOD_ID + "_Mailbox", tile) { }
+	public Mailbox() : base() { }
+
 	public override void draw(SpriteBatch b)
 	{
 		base.draw(b);

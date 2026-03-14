@@ -63,7 +63,7 @@ namespace FunkyBuildings.Framework
 
 		private static void FileUpdated(string file)
 		{
-			if (file.EqualsIgnoreCase("assets/buildings.json"))
+			if (file.EqualsIgnoreCase(Path.Join("assets", "buildings.json")))
 				helper.GameContent.InvalidateCache("Data/Buildings");
 			else if (Path.GetExtension(file).EqualsIgnoreCase(".mgfx"))
 				Assets.assets.ReloadShaders();

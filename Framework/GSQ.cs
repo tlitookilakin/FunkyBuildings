@@ -1,5 +1,6 @@
 ﻿using StardewValley;
 using StardewValley.Delegates;
+using StardewValley.Locations;
 using StarModGen.Lib;
 using System.Reflection;
 using static StardewValley.GameStateQuery;
@@ -34,6 +35,12 @@ namespace FunkyBuildings.Framework
 				return Helpers.ErrorResult(args, err);
 
 			return location.GetLocationContext().AllowRainTotem;
+		}
+
+		public static bool ISLAND_OBELISK_RESTORED(string[] args, GameStateQueryContext ctx)
+		{
+			var island = Game1.RequireLocation<IslandWest>("IslandWest");
+			return island.farmObelisk.Value;
 		}
 	}
 }

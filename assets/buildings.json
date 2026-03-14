@@ -79,22 +79,46 @@
 			"X": 3,
 			"Y": 2
 		},
+		"SortTileOffset": 2,
 		"DrawShadow": false,
-		"NonInstancedIndoorLocation": "IslandFarmHouse"
+		"NonInstancedIndoorLocation": "IslandFarmHouse",
+		"CustomFields": {
+			"tlitookilakin.FunkyBuildings_NoDemolish": ""
+		}
 	},
 	"IslandFarmObelisk": {
 		"Name": "Farm Obelisk",
 		"Description": "Farm warp obelisk",
 		"Texture": "Maps/Farm Obelisk",
-		"Builder": null,
+		"Builder": "IslandBird",
+		"BuildCost": 1000,
+		"BuildCondition": "!BUILDINGS_CONSTRUCTED Target tlitookilakin.FunkyBuildings_IslandFarmObelisk, LOCATION_NAME Target IslandWest, tlitookilakin.FunkyBuildings_ISLAND_OBELISK_RESTORED",
 		"Size": {
 			"X": 3,
 			"Y": 2
 		},
 		"SourceRect": {
-			"X": 48,
-			"Y": 144
+			"X": 0,
+			"Y": 0,
+			"Width": 48,
+			"Height": 128
 		},
+		"DrawLayers": [
+			{
+				"Id": "shadow",
+				"SourceRect": {
+					"X": 0,
+					"Y": 128,
+					"Width": 48,
+					"Height": 16
+				},
+				"DrawInBackground": true,
+				"DrawPosition": {
+					"X": 0,
+					"Y": 128
+				}
+			}
+		],
 		"DrawShadow": false,
 		"DefaultAction": "FarmObelisk"
 	},
