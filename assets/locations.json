@@ -6,7 +6,7 @@
 		},
 		"CreateOnLoad": {
 			"MapPath": "Maps/tlitookilakin.FunkyBuildings_IslandCellar",
-			"Type": "StardewValley.Locations.DecoratableLocation"
+			"Type": "FunkyBuildings.Locations.IslandCellar, FunkyBuildings"
 		}
 	}
 }

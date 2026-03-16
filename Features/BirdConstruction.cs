@@ -31,17 +31,12 @@ public class BirdConstruction
 		e.Harmony
 			.With<Building>(nameof(Building.performActionOnConstruction)).Postfix(DoBirdEffects)
 			.With<CarpenterMenu>(nameof(CarpenterMenu.robinConstructionMessage)).Prefix(HideRobinYap)
+			.With(nameof(CarpenterMenu.draw)).Transpiler(InjectMenuTint)
 			.With<IslandNorth>(nameof(IslandNorth.checkAction)).Prefix(ReplaceTrader);
 
 		var hook = FindBuildHook(PatchProcessor.GetOriginalInstructions(typeof(CarpenterMenu).GetMethod(nameof(CarpenterMenu.receiveLeftClick))));
 		if (hook != null)
 			e.Harmony.Harmony.Patch(hook, transpiler: new(typeof(BirdConstruction), nameof(ModifyMenuDelay)));
-	}
-
-	internal static void NewDay(object? _, DayStartedEventArgs e)
-	{
-		if (Game1.MasterPlayer is Farmer f && f.mailReceived.Contains(MOD_ID + "_IslandHouseUpgrade"))
-			AddCasksIfNeeded();
 	}
 
 	private static void DoBirdEffects(Building __instance, GameLocation location)
@@ -81,6 +76,29 @@ public class BirdConstruction
 			return (MethodBase)il.Operand;
 
 		return null;
+	}
+
+	private static IEnumerable<CodeInstruction> InjectMenuTint(IEnumerable<CodeInstruction> instructions)
+	{
+		var il = new CodeMatcher(instructions);
+		il
+			.MatchEndForward(
+				new CodeMatch(OpCodes.Call, typeof(Color).GetProperty(nameof(Color.RoyalBlue))!.GetMethod)
+			)
+			.MatchStartBackwards(
+				new CodeMatch(OpCodes.Call, typeof(Color).GetProperty(nameof(Color.White))!.GetMethod)
+			).Advance(1)
+			.InsertAndAdvance(
+				new(OpCodes.Ldarg_0),
+				new(OpCodes.Call, typeof(BirdConstruction).GetMethod(nameof(AdjustColor)))
+			);
+
+		return il.InstructionEnumeration();
+	}
+
+	public static Color AdjustColor(Color original, CarpenterMenu inst)
+	{
+		return inst.Builder is "IslandBird" ? Color.LightGreen : original;
 	}
 
 	private static IEnumerable<CodeInstruction> ModifyMenuDelay(IEnumerable<CodeInstruction> instructions)
@@ -272,7 +290,6 @@ public class BirdConstruction
 		Game1.addMail(MOD_ID + "_IslandHouseUpgrade", true, true);
 		helper.GameContent.InvalidateCache("Data/Locations");
 		Game1.getLocationFromName("IslandFarmHouse")?.mapPath?.Value = $"Maps/{MOD_ID}_IslandFarmHouse2";
-		AddCasksIfNeeded();
 
 		DelayedAction.functionAfterDelay(() => 
 		{
@@ -288,27 +305,6 @@ public class BirdConstruction
 			Game1.warpFarmer(locationRequest, Game1.player.TilePoint.X, Game1.player.TilePoint.Y, Game1.player.FacingDirection);
 		}, 1000);
 
-	}
-
-	private static void AddCasksIfNeeded()
-	{
-		var loc = Game1.getLocationFromName(MOD_ID + "_IslandCellar");
-		if (loc is null || loc.modData.ContainsKey(MOD_ID + "_CasksAdded"))
-			return;
-
-		int sy = 8;
-		int len = 7;
-		int[] sx = [1, 3, 4, 6, 7, 9, 10, 12, 13, 16, 17];
-
-		foreach (int x in sx)
-		{
-			for (int y = len + sy - 1; y >= sy; y--)
-			{
-				Vector2 v = new(x, y);
-				if (!loc.Objects.ContainsKey(v))
-					loc.Objects.Add(v, new Cask(v));
-			}
-		}
 	}
 
 	private static xTile.Dimensions.Location GetViewportPosition(GameLocation where, Building b)
