@@ -1,0 +1,12 @@
+{
+	"IslandCellar": {
+		"DefaultArrivalTile": {
+			"X": 4,
+			"Y": 2
+		},
+		"CreateOnLoad": {
+			"MapPath": "Maps/tlitookilakin.FunkyBuildings_IslandCellar",
+			"Type": "StardewValley.Locations.DecoratableLocation"
+		}
+	}
+}

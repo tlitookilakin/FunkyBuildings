@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.Buildings;
 using StardewValley.GameData.Buildings;
+using StardewValley.TokenizableStrings;
 using System.Diagnostics.CodeAnalysis;
 
 namespace FunkyBuildings.Framework
@@ -28,6 +29,9 @@ namespace FunkyBuildings.Framework
 					list[i].draw(b, local);
 			}
 		}
+
+		public static string Parse(this string text, Farmer? who = null)
+			=> TokenParser.ParseText(text, player: who ?? Game1.player);
 
 		public static Effect LoadEffect(string path)
 		{

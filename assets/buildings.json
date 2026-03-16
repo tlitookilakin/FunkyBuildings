@@ -23,7 +23,7 @@
 				"Amount": 5
 			}
 		],
-		"BuildDays": 2,
+		"BuildDays": 0,
 		"Size": {
 			"X": 3,
 			"Y": 3
@@ -168,7 +168,7 @@
 				"Amount": 10
 			}
 		],
-		"BuildDays": 1,
+		"BuildDays": 0,
 		"Size": {
 			"X": 3,
 			"Y": 3

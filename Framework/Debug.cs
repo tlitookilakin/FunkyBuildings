@@ -38,7 +38,8 @@ namespace FunkyBuildings.Framework
 
 		private static void DoDebug(string cmd, string[] args)
 		{
-			Game1.activeClickableMenu = new StockpileMenu(chest, 120);
+			//Game1.activeClickableMenu = new StockpileMenu(chest, 120);
+			Game1.MasterPlayer.mailReceived.Remove(MOD_ID + "_IslandHouseUpgrade");
 		}
 
 		private static void ShowDebugConstruct(string cmd, string[] args)

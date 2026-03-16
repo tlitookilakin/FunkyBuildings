@@ -55,6 +55,12 @@ namespace FunkyBuildings.Framework
 				loc.CreateOnLoad?.AlwaysActive = true;
 				loc.DisplayName ??= $"[LocalizedText Mods/{MOD_ID}/Strings:general.islandFarmName]";
 			}
+
+			if (data.TryGetValue("IslandFarmHouse", out loc))
+			{
+				if (Game1.MasterPlayer is Farmer f && f.mailReceived.Contains(MOD_ID + "_IslandHouseUpgrade"))
+					loc.CreateOnLoad?.MapPath = $"Maps/{MOD_ID}_IslandFarmHouse2";
+			}
 		}
 
 		[AssetEdit("Maps/Island_W")]

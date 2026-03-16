@@ -25,5 +25,7 @@
 	"birdmenu.shop": "Trade",
 	"birdmenu.construct": "Build",
 	"birdmenu.upgrade": "Upgrade",
-	"general.islandFarmName": "Island Farm"
+	"general.islandFarmName": "Island Farm",
+	"birdmenu.cantAffordUpgrade": "Will do for 10 [ItemName (O)791 [Golden Coconut]]s! Not has.",
+	"birdmenu.upgradePrompt": "Wantz bigger island nest for 10 [ItemName (O)791 [Golden Coconut]]s?"
 }

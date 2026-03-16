@@ -2,6 +2,7 @@
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Netcode;
+using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.BellsAndWhistles;
@@ -9,6 +10,7 @@ using StardewValley.Buildings;
 using StardewValley.Locations;
 using StardewValley.Menus;
 using StardewValley.Mods;
+using StardewValley.Objects;
 using StarModGen.Lib;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -20,11 +22,12 @@ public class BirdConstruction
 	private static readonly List<ParrotUpgradePerch> effects = [];
 	private static readonly AccessTools.FieldRef<Building, NetInt> newTimer 
 		= AccessTools.FieldRefAccess<Building, NetInt>("newConstructionTimer");
-	const string FLAG = MOD_ID + "_IslandFarmhouseUpgraded";
+	private static IModHelper helper = null!;
 
 	[ModEvent]
 	internal static void Init(object? _, SetupEventArgs e)
 	{
+		helper = e.Helper;
 		e.Harmony
 			.With<Building>(nameof(Building.performActionOnConstruction)).Postfix(DoBirdEffects)
 			.With<CarpenterMenu>(nameof(CarpenterMenu.robinConstructionMessage)).Prefix(HideRobinYap)
@@ -33,6 +36,12 @@ public class BirdConstruction
 		var hook = FindBuildHook(PatchProcessor.GetOriginalInstructions(typeof(CarpenterMenu).GetMethod(nameof(CarpenterMenu.receiveLeftClick))));
 		if (hook != null)
 			e.Harmony.Harmony.Patch(hook, transpiler: new(typeof(BirdConstruction), nameof(ModifyMenuDelay)));
+	}
+
+	internal static void NewDay(object? _, DayStartedEventArgs e)
+	{
+		if (Game1.MasterPlayer is Farmer f && f.mailReceived.Contains(MOD_ID + "_IslandHouseUpgrade"))
+			AddCasksIfNeeded();
 	}
 
 	private static void DoBirdEffects(Building __instance, GameLocation location)
@@ -163,7 +172,8 @@ public class BirdConstruction
 			new("construct", Assets.LoadString("birdmenu.construct"))
 		];
 
-		if (Game1.getLocationFromName("IslandWest") is IslandWest w && w.farmhouseRestored.Value && !Game1.MasterPlayer.mailReceived.Contains(FLAG))
+		if (Game1.getLocationFromName("IslandWest") is IslandWest w && w.farmhouseRestored.Value && 
+			!Game1.MasterPlayer.mailReceived.Contains(MOD_ID + "_IslandHouseUpgrade"))
 			opts.Add(new("upgrade", Assets.LoadString("birdmenu.upgrade")));
 
 		return opts;
@@ -180,7 +190,7 @@ public class BirdConstruction
 				Utility.TryOpenShopMenu("IslandTrade", null, playOpenSound: true);
 				break;
 			case "upgrade":
-				//todo
+				IslandUpgradePrompt();
 				break;
 		}
 	}
@@ -199,5 +209,116 @@ public class BirdConstruction
 			return false;
 		}
 		return true;
+	}
+
+	private static void IslandUpgradePrompt()
+	{
+		if (!Game1.player.Items.ContainsId("(O)791", 10))
+		{
+			Game1.drawObjectDialogue(Assets.LoadString("birdmenu.cantAffordUpgrade").Parse());
+		}
+		else
+		{
+			DelayedAction.functionAfterDelay(() =>
+			{
+				Game1.currentLocation.createQuestionDialogue(
+					Assets.LoadString("birdmenu.upgradePrompt").Parse(),
+					Game1.currentLocation.createYesNoResponses(),
+					(f, s) =>
+					{
+						if (s == "Yes")
+						{
+							f.removeFirstOfThisItemFromInventory("(O)791", 10);
+							Game1.globalFadeToBlack(DoIslandUpgrade);
+						}
+					}
+				);
+			}, 1);
+		}
+	}
+
+	private static void DoIslandUpgrade()
+	{
+		var target = Game1.RequireLocation("IslandWest");
+		var b = target.getBuildingByType(MOD_ID + "_IslandFarmhouse");
+
+		if (b is null)
+			return;
+
+		var oldLoc = Game1.currentLocation.NameOrUniqueName;
+		var oldPort = Game1.viewport.Location;
+
+		Game1.currentLocation.cleanupBeforePlayerExit();
+		Game1.currentLocation = target;
+		Game1.player.viewingLocation.Value = target.NameOrUniqueName;
+		Game1.currentLocation.resetForPlayerEntry();
+		Game1.globalFadeToClear();
+		Game1.displayHUD = false;
+		Game1.viewportFreeze = true;
+		Game1.viewport.Location = GetViewportPosition(target, b);
+		Game1.clampViewportToGameMap();
+		Game1.panScreen(0, 0);
+		Game1.displayFarmer = false;
+
+		DelayedAction.functionAfterDelay(() => {
+			var bounds = b.GetBounds();
+			bounds.Inflate(1, 1);
+			StartConstructionAnimation(target, bounds, () => ApplyFarmhouseUpgrade(oldLoc, oldPort), "IslandHouseUpgrade");
+		}, 1000);
+	}
+
+	private static void ApplyFarmhouseUpgrade(string oldLocation, xTile.Dimensions.Location oldViewport)
+	{
+		Game1.addMail(MOD_ID + "_IslandHouseUpgrade", true, true);
+		helper.GameContent.InvalidateCache("Data/Locations");
+		Game1.getLocationFromName("IslandFarmHouse")?.mapPath?.Value = $"Maps/{MOD_ID}_IslandFarmHouse2";
+		AddCasksIfNeeded();
+
+		DelayedAction.functionAfterDelay(() => 
+		{
+			LocationRequest locationRequest = Game1.getLocationRequest(oldLocation);
+			locationRequest.OnWarp += delegate
+			{
+				Game1.displayHUD = true;
+				Game1.player.viewingLocation.Value = null;
+				Game1.viewportFreeze = false;
+				Game1.viewport.Location = oldViewport;
+				Game1.displayFarmer = true;
+			};
+			Game1.warpFarmer(locationRequest, Game1.player.TilePoint.X, Game1.player.TilePoint.Y, Game1.player.FacingDirection);
+		}, 1000);
+
+	}
+
+	private static void AddCasksIfNeeded()
+	{
+		var loc = Game1.getLocationFromName(MOD_ID + "_IslandCellar");
+		if (loc is null || loc.modData.ContainsKey(MOD_ID + "_CasksAdded"))
+			return;
+
+		int sy = 8;
+		int len = 7;
+		int[] sx = [1, 3, 4, 6, 7, 9, 10, 12, 13, 16, 17];
+
+		foreach (int x in sx)
+		{
+			for (int y = len + sy - 1; y >= sy; y--)
+			{
+				Vector2 v = new(x, y);
+				if (!loc.Objects.ContainsKey(v))
+					loc.Objects.Add(v, new Cask(v));
+			}
+		}
+	}
+
+	private static xTile.Dimensions.Location GetViewportPosition(GameLocation where, Building b)
+	{
+		Point p;
+		if (b is null)
+			p = where.GetData()?.DefaultArrivalTile ?? new(0, 0);
+		else
+			p = b.GetBounds().Center;
+
+		return new((int)(p.X * 64f - Game1.viewport.Width / 2f), (int)(p.Y * 64f - Game1.viewport.Height / 2f));
 	}
 }

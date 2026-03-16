@@ -23,7 +23,7 @@
 	<ItemGroup>
 		<PackageReference Include="Leclair.Stardew.ModManifestBuilder" Version="2.4.1" />
 		<PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
-		<PackageReference Include="tlitookilakin.StarModGen" Version="0.2.7" ExcludeAssets="runtime" />
+		<PackageReference Include="tlitookilakin.StarModGen" Version="0.2.8" ExcludeAssets="runtime" />
 		<Reference Include="SpaceCore">
 			<HintPath>$(GameModsPath)\SpaceCore\SpaceCore.dll</HintPath>
 			<Private>false</Private>
@@ -37,6 +37,9 @@
 		<AdditionalFiles Include="assets/exteriors/arborealcloche.png" GameAssetLoad="/ArborealCloche" />
 		<AdditionalFiles Include="assets/exteriors/field_stone.png" GameAssetLoad="/FieldStone" />
 		<AdditionalFiles Include="assets/exteriors/lightning_rod.png" GameAssetLoad="/LightningRod" />
+		<AdditionalFiles Include="assets/maps/IslandCellar.tmx" GameAssetLoad="Maps/$(UniqueId)_IslandCellar" />
+		<AdditionalFiles Include="assets/maps/IslandHouseUpgrade.tmx" GameAssetLoad="Maps/$(UniqueId)_IslandFarmHouse2" />
+		<AdditionalFiles Include="assets/locations.json" GameAssetMerge="Data/Locations" />
 		<Shaders Include="assets/**/*.fx" />
 	</ItemGroup>
 
