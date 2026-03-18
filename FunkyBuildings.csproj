@@ -18,6 +18,7 @@
 		<UpdateKeys></UpdateKeys>
 		<Version>1.0.0</Version>
 		<BaseManifest>new</BaseManifest>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
 	<ItemGroup>

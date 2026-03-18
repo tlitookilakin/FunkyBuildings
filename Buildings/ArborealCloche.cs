@@ -15,6 +15,7 @@ namespace FunkyBuildings.Buildings;
 public class ArborealCloche : EffectBuilding
 {
 	private static readonly HashSet<FruitTree> clochedTrees = [];
+	private static EffectState state = new() { DepthOffset = -1f };
 
 	private readonly NetRef<FruitTree?> tree = new();
 	public FruitTree? Tree
@@ -38,22 +39,11 @@ public class ArborealCloche : EffectBuilding
 		}
 	}
 
-	private static RenderTarget2D? _buffer;
-	private static int _lastTick;
-
-    protected override RenderTarget2D? buffer
-	{
-		get => _buffer;
-		set => _buffer = value;
+    protected override EffectState effectState 
+	{ 
+		get => state; 
+		set => state = value;
 	}
-
-    protected override int lastDrawTick
-	{
-		get => _lastTick;
-		set => _lastTick = value;
-	}
-
-    protected override bool verticalOffset => false;
 
     public ArborealCloche() : base() { }
 	public ArborealCloche(Vector2 tile) : base(tile, MOD_ID + "_AborealCloche") { }

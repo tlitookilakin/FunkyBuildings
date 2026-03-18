@@ -14,30 +14,22 @@ public class FieldStone : EffectBuilding
 {
 	const string ID = MOD_ID + "_" + nameof(FieldStone);
 	private static readonly Dictionary<GameLocation, List<Rectangle>> LocationBuildingCache = [];
-	private static int _lastDrawTick;
-	private static RenderTarget2D? _buffer;
+	private static EffectState state = new() { VerticalOffset = true, DepthOffset = 1f };
 
 	private readonly NetInt radius = new();
+
+    protected override EffectState effectState 
+	{ 
+		get => state; 
+		set => state = value;
+	}
 	public int Radius
 	{
-		get => radius.Value; 
+		get => radius.Value;
 		set => radius.Value = value;
 	}
-	protected override int lastDrawTick 
-	{ 
-		get => _lastDrawTick; 
-		set => _lastDrawTick = value; 
-	}
 
-	protected override bool verticalOffset => true;
-
-	protected override RenderTarget2D? buffer
-	{
-		get => _buffer;
-		set => _buffer = value;
-	}
-
-	public FieldStone(Vector2 tile) : base(tile, ID) { }
+    public FieldStone(Vector2 tile) : base(tile, ID) { }
 
 	public FieldStone() : base() { }
 
@@ -112,7 +104,7 @@ public class FieldStone : EffectBuilding
 	protected override void UpdateParams(Effect effect)
 	{
 		effect.Parameters["Time"].SetValue((float)Game1.currentGameTime.TotalGameTime.TotalSeconds);
-		if (buffer != null)
-			effect.Parameters["Resolution"].SetValue(buffer.Bounds.Size.ToVector2());
+		if (state.Buffer != null)
+			effect.Parameters["Resolution"].SetValue(state.Buffer.Bounds.Size.ToVector2());
 	}
 }
