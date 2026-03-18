@@ -368,6 +368,7 @@
 				"Amount": 1
 			}
 		],
+		"MagicalConstruction": true,
 		"Size": {
 			"X": 2,
 			"Y": 2
@@ -524,7 +525,7 @@
 		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.MagicPond.name]",
 		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.MagicPond.desc]",
 		"Texture": "Mods/tlitookilakin.FunkyBuildings/MagicPond",
-		"BuildingType": "FunkyBuildings.Buildings.MagicPond",
+		"BuildingType": "FunkyBuildings.Buildings.MagicPond, FunkyBuildings",
 		"Builder": "Wizard",
 		"BuildCost": 100000,
 		"BuildMaterials": [
@@ -544,6 +545,7 @@
 				"Amount": 200
 			}
 		],
+		"MagicalConstruction": true,
 		"Size": {
 			"X": 5,
 			"Y": 5
@@ -554,31 +556,23 @@
 			"Width": 80,
 			"Height": 96
 		},
+		"SortTileOffset": 3,
+		"DrawShadow": false,
+		"FadeWhenBehind": false,
 		"DrawLayers": [
 			{
-				"Id": "underwater",
+				"Id": "bottom",
 				"SourceRect": {
 					"X": 80,
-					"Y": 0,
+					"Y": 16,
 					"Width": 80,
 					"Height": 80
 				},
-				"DrawPosition": "0, 0",
-				"DrawInBackground": true
-			}
-		],
-		"TileProperties": [
-			{
-				"Id": "water",
-				"Name": "Water",
-				"Value": "T",
-				"Layer": "Buildings",
-				"TileArea": {
+				"DrawPosition": {
 					"X": 0,
-					"Y": 0,
-					"Width": 5,
-					"Height": 5
-				}
+					"Y": 16
+				},
+				"DrawInBackground": true
 			}
 		]
 	}

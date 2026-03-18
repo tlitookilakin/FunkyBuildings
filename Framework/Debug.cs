@@ -68,6 +68,8 @@ namespace FunkyBuildings.Framework
 				helper.GameContent.InvalidateCache("Data/Buildings");
 			else if (Path.GetExtension(file).EqualsIgnoreCase(".mgfx"))
 				Assets.assets.ReloadShaders();
+			else if (file.EqualsIgnoreCase(Path.Join("assets", "sprites.json")))
+				helper.GameContent.InvalidateCache("Mods/" + MOD_ID + "/Sprites");
 		}
 #endif
 

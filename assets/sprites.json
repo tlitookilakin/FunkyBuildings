@@ -1,0 +1,16 @@
+{
+	"BigSparkle": {
+		"Id": "BigSparkle",
+		"Texture": "Tilesheets\\animations",
+		"SourceRect": {
+			"X": 0,
+			"Y": 640,
+			"Width": 64,
+			"Height": 64
+		},
+		"Scale": 0.25,
+		"Loops": 1,
+		"Interval": 150,
+		"Frames": 8
+	}
+}

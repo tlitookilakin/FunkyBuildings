@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.GameData;
 using StardewValley.GameData.Locations;
 using StarModGen.Lib;
 
@@ -16,6 +17,9 @@ namespace FunkyBuildings.Framework
 
 		[Asset("/UI/Cloche", "assets/ui/cloche.png")]
 		public partial Texture2D ClocheUI { get; }
+
+		[Asset("/Sprites", "assets/sprites.json")]
+		public partial Dictionary<string, TemporaryAnimatedSpriteDefinition> Sprites { get; }
 
 		public Effect StoneGlow
 			=> stoneGlow ??= ModUtilities.LoadEffect("assets/effects/stoneglow.mgfx");
