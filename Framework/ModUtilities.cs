@@ -33,6 +33,11 @@ namespace FunkyBuildings.Framework
 		public static string Parse(this string text, Farmer? who = null)
 			=> TokenParser.ParseText(text, player: who ?? Game1.player);
 
+		public static Point NextPoint(this Random rand, Rectangle region)
+		{
+			return new(rand.Next(region.Width) + region.X, rand.Next(region.Height) + region.Y);
+		}
+
 		public static Effect LoadEffect(string path)
 		{
 			byte[] raw =
@@ -59,15 +64,21 @@ namespace FunkyBuildings.Framework
 
 		public static bool TryGetCustomField(this Building b, string key, [NotNullWhen(true)] out string? value)
 		{
+			return TryGetCustomField(b, b?.GetData(), key, out value);
+		}
+
+		public static bool TryGetCustomField(this Building b, BuildingData? data, string key, [NotNullWhen(true)] out string? value)
+		{
 			value = null;
 
-			if (b.GetData() is not BuildingData data)
+			if (data is null)
 				return false;
 
 			if (data.CustomFields is not Dictionary<string, string> fields)
 				return false;
 
 			return fields.TryGetValue(key, out value);
+
 		}
 	}
 }

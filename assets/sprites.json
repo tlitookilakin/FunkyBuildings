@@ -12,5 +12,18 @@
 		"Loops": 1,
 		"Interval": 150,
 		"Frames": 8
+	},
+	"Runes": {
+		"Id": "Runes",
+		"Texture": "Mods/tlitookilakin.FunkyBuildings/Particles",
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 16,
+			"Height": 16
+		},
+		"Scale": 0.5,
+		"Interval": 2000,
+		"AlphaFade": 0.01
 	}
 }

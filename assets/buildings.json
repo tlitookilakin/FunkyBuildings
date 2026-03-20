@@ -3,7 +3,7 @@
 		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Alveary.name]",
 		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Alveary.desc]",
 		"Texture": "Mods/tlitookilakin.FunkyBuildings/Alveary",
-		"BuildingType": "FunkyBuildings.Buildings.Alveary",
+		"BuildingType": "FunkyBuildings.Buildings.Alveary, FunkyBuildings",
 		"Builder": "IslandBird",
 		"BuildCost": 20000,
 		"BuildMaterials": [
@@ -219,7 +219,6 @@
 		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.LightningRod.desc]",
 		"Texture": "Mods/tlitookilakin.FunkyBuildings/LightningRod",
 		"BuildingType": "FunkyBuildings.Buildings.LightningRod",
-		"Builder": "Robin",
 		"BuildCost": 100000,
 		"BuildMaterials": [
 			{
@@ -353,14 +352,14 @@
 		"BuildCost": 20000,
 		"BuildMaterials": [
 			{
-				"ID": "quartz",
-				"ItemId": "(O)338",
-				"Amount": 10
+				"ID": "stone",
+				"ItemId": "(O)390",
+				"Amount": 100
 			},
 			{
-				"ID": "gemberry",
-				"ItemId": "(O)417",
-				"Amount": 1
+				"ID": "moss",
+				"ItemId": "(O)Moss",
+				"Amount": 10
 			},
 			{
 				"ID": "fairydust",
@@ -382,6 +381,11 @@
 		"SeasonOffset": {
 			"X": 32,
 			"Y": 0
+		},
+		"CustomFields": {
+			"tlitookilakin.FunkyBuildings_ParticleColor": "#FF88FC, #70FF00, #FFFF00, #00FFFF",
+			"tlitookilakin.FunkyBuildings_EffectRadius": "4",
+			"tlitookilakin.FunkyBuildings_BirdSpots": "0 -1 1 -2"
 		}
 	},
 	"Stockpile": {
