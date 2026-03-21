@@ -388,6 +388,47 @@
 			"tlitookilakin.FunkyBuildings_BirdSpots": "0 -1 1 -2"
 		}
 	},
+	"RainObelisk": {
+		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.rainObelisk.name]",
+		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.rainObelisk.desc]",
+		"Texture": "Mods/tlitookilakin.FunkyBuildings/RainObelisk",
+		"BuildingType": "FunkyBuildings.Buildings.RainObelisk, FunkyBuildings",
+		"Builder": "Wizard",
+		"MagicalConstruction": true,
+		"BuildCost": 1000000,
+		"BuildMaterials": [
+			{
+				"Id": "hardwood",
+				"ItemId": "(O)709",
+				"Amount": 5
+			},
+			{
+				"Id": "truffle_oil",
+				"ItemId": "(O)432",
+				"Amount": 5
+			},
+			{
+				"Id": "pine_tar",
+				"ItemId": "(O)726",
+				"Amount": 25
+			}
+		],
+		"Size": {
+			"X": 3,
+			"Y": 2
+		},
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 48,
+			"Height": 128
+		},
+		"DefaultAction": "tlitookilakin.FunkyBuildings_ActivateRain",
+		"BuildCondition": "tlitookilakin.FunkyBuildings_RAIN_TOTEM_ALLOWED Target, !BUILDINGS_CONSTRUCTED Target tlitookilakin.FunkyBuildings_RainObelisk",
+		"CustomFields": {
+			"tlitookilakin.FunkyBuildings_BirdSpots": "0 -5 2 -6"
+		}
+	},
 	"Stockpile": {
 		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Stockpile.name]",
 		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Stockpile.desc]",

@@ -29,6 +29,10 @@ namespace FunkyBuildings.Framework
 			=> glassBeams ??= ModUtilities.LoadEffect("assets/effects/glassbeams.mgfx");
 		private Effect? glassBeams;
 
+		public Effect WeatherOverlay
+			=> weatherOverlay ??= ModUtilities.LoadEffect("assets/effects/weather.mgfx");
+		private Effect? weatherOverlay;
+
 		[AssetEntry]
 		public partial void Entry(IModHelper helper);
 
@@ -43,6 +47,7 @@ namespace FunkyBuildings.Framework
 		{
 			stoneGlow = null;
 			glassBeams = null;
+			weatherOverlay = null;
 		}
 
 		public static string LoadString(string key)

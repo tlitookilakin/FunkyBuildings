@@ -31,7 +31,7 @@ namespace FunkyBuildings.Framework
 		public static bool RAIN_TOTEM_ALLOWED(string[] args, GameStateQueryContext ctx)
 		{
 			GameLocation location = ctx.Location;
-			if (!Helpers.TryGetLocationArg(args, 0, ref location, out var err))
+			if (!Helpers.TryGetLocationArg(args, 1, ref location, out var err))
 				return Helpers.ErrorResult(args, err);
 
 			return location.GetLocationContext().AllowRainTotem;

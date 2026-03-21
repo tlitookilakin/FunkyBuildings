@@ -1,14 +1,28 @@
 ﻿using FunkyBuildings.Framework;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StarModGen.Lib;
+using System.Xml.Serialization;
 
 namespace FunkyBuildings.Buildings;
 
-// TODO building data entry
-public class RainObelisk
+[XmlType("Mods_" + MOD_ID + "_RainObelisk")]
+public class RainObelisk : EffectBuilding
 {
-	[ModEvent]
+	private static EffectState _state = new() { IncrementDepth = true, DepthOffset = 1 };
+	private static Vector4 stormy = Utility.StringToColor("#4E5F70")?.ToVector4() ?? Vector4.One;
+
+    protected override EffectState effectState 
+	{ 
+		get => _state; 
+		set => _state = value; 
+	}
+
+	public RainObelisk() : base() { }
+	public RainObelisk(Vector2 tile) : base(tile, MOD_ID + "_RainObelisk") { }
+
+    [ModEvent]
 	internal static void Init(object? s, SetupEventArgs ev)
 	{
 		GameLocation.RegisterTileAction(MOD_ID + "_ActivateRain", ActivateRain);
@@ -21,11 +35,13 @@ public class RainObelisk
 		if (!context.AllowRainTotem)
 			return false;
 
-		if (!Utility.isFestivalDay(Game1.dayOfMonth + 1, Game1.season))
-		{
-			Game1.netWorldState.Value.WeatherForTomorrow = Game1.weatherForTomorrow = "Rain";
-			Game1.pauseThenMessage(2000, Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.12822"));
-		}
+		var id = context.RainTotemAffectsContext ?? where.GetLocationContextId();
+
+		if (id == "Default" && Utility.isFestivalDay(Game1.dayOfMonth + 1, Game1.season))
+			return true;
+
+		where.GetWeather().WeatherForTomorrow = "Rain";
+		Game1.pauseThenMessage(2000, Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.12822"));
 
 		var pos = who.Position;
 
@@ -63,5 +79,19 @@ public class RainObelisk
 		}
 		DelayedAction.playSoundAfterDelay("rainsound", 2000);
 		return true;
+	}
+
+    protected override Effect GetEffect()
+    {
+		return Assets.assets.WeatherOverlay;
+    }
+
+    protected override void UpdateParams(Effect effect)
+	{
+		effect.Parameters["Tint"]?.SetValue(GetParentLocation() is GameLocation where && where.IsRainingHere() ? stormy : Vector4.One);
+		effect.Parameters["Time"]?.SetValue((float)Game1.currentGameTime.TotalGameTime.TotalSeconds);
+		effect.Parameters["Region"]?.SetValue(new Vector4(96f, 0f, 96f, 128f));
+		if (effectState.Buffer is Texture2D t)
+			effect.Parameters["Resolution"]?.SetValue(t.Bounds.Size.ToVector2());
 	}
 }
