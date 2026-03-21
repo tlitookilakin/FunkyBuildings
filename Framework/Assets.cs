@@ -52,7 +52,7 @@ namespace FunkyBuildings.Framework
 
 		public static string LoadString(string key)
 		{
-			return Game1.content.LoadString($"Mods/{MOD_ID}/Strings:{key}");
+			return Game1.content.LoadString($"{LANG_PATH}:{key}");
 		}
 
 		[AssetEdit("Data/Locations")]

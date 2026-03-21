@@ -29,5 +29,8 @@
 	"birdmenu.cantAffordUpgrade": "Will do for 10 [ItemName (O)791 [Golden Coconut]]s! Not has.",
 	"birdmenu.upgradePrompt": "Wantz bigger island nest for 10 [ItemName (O)791 [Golden Coconut]]s?",
 	"buildings.rainObelisk.name": "Rain Obelisk",
-	"buildings.rainObelisk.desc": "A more permanent solution to calling storms from the sky."
+	"buildings.rainObelisk.desc": "A more permanent solution to calling storms from the sky.",
+	"ui.lightning.none": "This attractor has not been struck by lightning.",
+	"ui.lightning.single": "This attractor has been struck by lightning once.",
+	"ui.lightning.multiple": "This attractor has been struck by lightning {0} times."
 }

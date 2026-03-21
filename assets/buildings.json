@@ -218,7 +218,7 @@
 		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.LightningRod.name]",
 		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.LightningRod.desc]",
 		"Texture": "Mods/tlitookilakin.FunkyBuildings/LightningRod",
-		"BuildingType": "FunkyBuildings.Buildings.LightningRod",
+		"BuildingType": "FunkyBuildings.Buildings.LightningRod, FunkyBuildings",
 		"BuildCost": 100000,
 		"BuildMaterials": [
 			{
@@ -246,59 +246,46 @@
 		"SourceRect": {
 			"X": 0,
 			"Y": 0,
-			"Width": 48,
-			"Height": 128
-		},
-		"SeasonOffset": {
-			"X": 48,
-			"Y": 0
+			"Width": 32,
+			"Height": 160
 		},
 		"Chests": [
 			{
-				"Id": "Input",
-				"Type": "Chest"
-			},
-			{
 				"Id": "Output",
 				"Type": "Collect",
-				"DisplayTile": "1, 1",
-				"DisplayHeight": 0
+				"DisplayTile": "2, 0",
+				"DisplayHeight": 1.0
 			}
 		],
 		"DrawLayers": [
 			{
-				"Id": "BirdTop",
+				"Id": "box",
 				"SourceRect": {
-					"X": 0,
+					"X": 32,
 					"Y": 144,
 					"Width": 16,
 					"Height": 16
 				},
 				"DrawPosition": {
-					"X": 16,
-					"Y": 44
-				},
-				"FrameCount": 3,
-				"FrameDuration": 578764
-			},
-			{
-				"Id": "BirdBottom",
-				"SourceRect": {
-					"X": 0,
-					"Y": 128,
-					"Width": 16,
-					"Height": 16
-				},
-				"DrawPosition": {
-					"X": 23,
-					"Y": 82
-				},
-				"FrameCount": 3,
-				"FrameDuration": 338437
+					"X": 32,
+					"Y": 144
+				}
 			}
 		],
-		"DrawShadow": true,
-		"DefaultAction": "BuildingChest Output"
+		"CustomFields": {
+			"tlitookilakin.FunkyBuildings_BirdSpots": "0 -4 1 -5"
+		},
+		"DrawShadow": false,
+		"ActionTiles": [
+			{
+				"Id": "box",
+				"Action": "BuildingChest Output",
+				"Tile": {
+					"X": 2,
+					"Y": 0
+				}
+			}
+		]
 	},
 	"OminousEffigy": {
 		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.OminousEffigy.name]",

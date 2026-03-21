@@ -153,7 +153,7 @@ internal class BuildingBirds
 	{
 		List<Point> perches = [];
 		foreach (var b in where.buildings)
-			if (b.TryGetCustomField(MOD_ID + "_BirdSpots", out var s))
+			if (b.daysOfConstructionLeft.Value <= 0 && b.TryGetCustomField(MOD_ID + "_BirdSpots", out var s))
 				AddPerches(perches, s, b.tileX.Value, b.tileY.Value);
 
 		return perches;
