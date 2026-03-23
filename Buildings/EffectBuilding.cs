@@ -4,7 +4,7 @@ using StardewValley;
 using StardewValley.Buildings;
 using StardewValley.GameData.Buildings;
 
-namespace FunkyBuildings.Buildings;
+namespace BuildingsExpanded.Buildings;
 
 public abstract class EffectBuilding : Building
 {

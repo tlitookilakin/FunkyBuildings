@@ -1,4 +1,4 @@
-﻿using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Framework;
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
@@ -11,7 +11,7 @@ using System.Reflection.Emit;
 using xTile;
 using xTile.Layers;
 
-namespace FunkyBuildings.Features;
+namespace BuildingsExpanded.Features;
 
 internal class VanillaIslandBuildings
 {

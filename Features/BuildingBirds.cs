@@ -1,4 +1,4 @@
-﻿using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Framework;
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,7 +10,7 @@ using StardewValley.BellsAndWhistles;
 using StardewValley.Buildings;
 using StarModGen.Lib;
 
-namespace FunkyBuildings.Features;
+namespace BuildingsExpanded.Features;
 
 internal class BuildingBirds
 {

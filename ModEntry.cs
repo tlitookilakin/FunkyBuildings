@@ -1,4 +1,4 @@
-﻿using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Framework;
 using SpaceShared.APIs;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
@@ -7,7 +7,7 @@ using StarModGen.Lib;
 using System.Reflection;
 using System.Xml.Serialization;
 
-namespace FunkyBuildings
+namespace BuildingsExpanded
 {
 	public class ModEntry : Mod
 	{

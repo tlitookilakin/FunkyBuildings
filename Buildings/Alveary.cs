@@ -1,6 +1,6 @@
-﻿using FunkyBuildings.Data;
-using FunkyBuildings.Framework;
-using FunkyBuildings.Integration;
+﻿using BuildingsExpanded.Data;
+using BuildingsExpanded.Framework;
+using BuildingsExpanded.Integration;
 using Microsoft.Xna.Framework;
 using Netcode;
 using StardewValley;
@@ -12,7 +12,7 @@ using StardewValley.TerrainFeatures;
 using System.Xml.Serialization;
 using SObject = StardewValley.Object;
 
-namespace FunkyBuildings.Buildings;
+namespace BuildingsExpanded.Buildings;
 
 [XmlType("Mods_" + MOD_ID + "_Alveary")]
 public class Alveary : Building

@@ -1,4 +1,4 @@
-﻿using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Framework;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Buildings;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Xml.Serialization;
 using SObject = StardewValley.Object;
 
-namespace FunkyBuildings.Buildings
+namespace BuildingsExpanded.Buildings
 {
 	[XmlType("Mods_" + MOD_ID + "_Manufactory")]
 	public class Manufactory : Building

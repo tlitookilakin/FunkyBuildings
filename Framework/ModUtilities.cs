@@ -6,7 +6,7 @@ using StardewValley.GameData.Buildings;
 using StardewValley.TokenizableStrings;
 using System.Diagnostics.CodeAnalysis;
 
-namespace FunkyBuildings.Framework
+namespace BuildingsExpanded.Framework
 {
 	public static class ModUtilities
 	{

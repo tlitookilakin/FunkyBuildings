@@ -1,9 +1,9 @@
 ﻿{
 	"Alveary": {
-		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Alveary.name]",
-		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Alveary.desc]",
-		"Texture": "Mods/tlitookilakin.FunkyBuildings/Alveary",
-		"BuildingType": "FunkyBuildings.Buildings.Alveary, FunkyBuildings",
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.Alveary.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.Alveary.desc]",
+		"Texture": "Mods/tlitoo.BuildEx/Alveary",
+		"BuildingType": "BuildingsExpanded.Buildings.Alveary, BuildingsExpanded",
 		"Builder": "IslandBird",
 		"BuildCost": 20000,
 		"BuildMaterials": [
@@ -83,7 +83,7 @@
 		"DrawShadow": false,
 		"NonInstancedIndoorLocation": "IslandFarmHouse",
 		"CustomFields": {
-			"tlitookilakin.FunkyBuildings_NoDemolish": ""
+			"tlitoo.BuildEx_NoDemolish": ""
 		}
 	},
 	"IslandFarmObelisk": {
@@ -92,7 +92,7 @@
 		"Texture": "Maps/Farm Obelisk",
 		"Builder": "IslandBird",
 		"BuildCost": 1000,
-		"BuildCondition": "!BUILDINGS_CONSTRUCTED Target tlitookilakin.FunkyBuildings_IslandFarmObelisk, LOCATION_NAME Target IslandWest, tlitookilakin.FunkyBuildings_ISLAND_OBELISK_RESTORED",
+		"BuildCondition": "!BUILDINGS_CONSTRUCTED Target tlitoo.BuildEx_IslandFarmObelisk, LOCATION_NAME Target IslandWest, tlitoo.BuildEx_ISLAND_OBELISK_RESTORED",
 		"Size": {
 			"X": 3,
 			"Y": 2
@@ -122,12 +122,12 @@
 		"DrawShadow": false,
 		"DefaultAction": "FarmObelisk",
 		"CustomFields": {
-			"tlitookilakin.FunkyBuildings_BirdSpots": "0 0 1 0 2 0"
+			"tlitoo.BuildEx_BirdSpots": "0 0 1 0 2 0"
 		}
 	},
 	"Mailbox": {
-		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Mailbox.name]",
-		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Mailbox.desc]",
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.Mailbox.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.Mailbox.desc]",
 		"Texture": "Buildings/Mailbox",
 		"SourceRect": {
 			"X": 0,
@@ -139,16 +139,16 @@
 			"X": 1,
 			"Y": 1
 		},
-		"BuildingType": "FunkyBuildings.Buildings.Mailbox, FunkyBuildings",
+		"BuildingType": "BuildingsExpanded.Buildings.Mailbox, BuildingsExpanded",
 		"DefaultAction": "Mailbox",
 		"DrawShadow": false,
 		"BuildCost": 500
 	},
 	"ArborealCloche": {
-		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.ArborealCloche.name]",
-		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.ArborealCloche.desc]",
-		"Texture": "Mods/tlitookilakin.FunkyBuildings/ArborealCloche",
-		"BuildingType": "FunkyBuildings.Buildings.ArborealCloche, FunkyBuildings",
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.ArborealCloche.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.ArborealCloche.desc]",
+		"Texture": "Mods/tlitoo.BuildEx/ArborealCloche",
+		"BuildingType": "BuildingsExpanded.Buildings.ArborealCloche, BuildingsExpanded",
 		"Builder": "IslandBird",
 		"BuildCost": 5000,
 		"BuildMaterials": [
@@ -215,10 +215,10 @@
 		"DrawShadow": false
 	},
 	"LightningRod": {
-		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.LightningRod.name]",
-		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.LightningRod.desc]",
-		"Texture": "Mods/tlitookilakin.FunkyBuildings/LightningRod",
-		"BuildingType": "FunkyBuildings.Buildings.LightningRod, FunkyBuildings",
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.LightningRod.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.LightningRod.desc]",
+		"Texture": "Mods/tlitoo.BuildEx/LightningRod",
+		"BuildingType": "BuildingsExpanded.Buildings.LightningRod, BuildingsExpanded",
 		"BuildCost": 100000,
 		"BuildMaterials": [
 			{
@@ -238,7 +238,7 @@
 			}
 		],
 		"BuildDays": 2,
-		"BuildCondition": "LOCATION_NAME Target Farm, !BUILDINGS_CONSTRUCTED Target tlitookilakin.FunkyBuildings_LightningRod 1",
+		"BuildCondition": "LOCATION_NAME Target Farm, !BUILDINGS_CONSTRUCTED Target tlitoo.BuildEx_LightningRod 1",
 		"Size": {
 			"X": 3,
 			"Y": 1
@@ -273,7 +273,7 @@
 			}
 		],
 		"CustomFields": {
-			"tlitookilakin.FunkyBuildings_BirdSpots": "0 -4 1 -5"
+			"tlitoo.BuildEx_BirdSpots": "0 -4 1 -5"
 		},
 		"DrawShadow": false,
 		"ActionTiles": [
@@ -288,10 +288,10 @@
 		]
 	},
 	"OminousEffigy": {
-		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.OminousEffigy.name]",
-		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.OminousEffigy.desc]",
-		"Texture": "Mods/tlitookilakin.FunkyBuildings/Effigy",
-		"BuildingType": "FunkyBuildings.Buildings.OminousEffigy",
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.OminousEffigy.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.OminousEffigy.desc]",
+		"Texture": "Mods/tlitoo.BuildEx/Effigy",
+		"BuildingType": "BuildingsExpanded.Buildings.OminousEffigy",
 		"Builder": "Wizard",
 		"BuildCost": 1000000,
 		"BuildMaterials": [
@@ -312,7 +312,7 @@
 			}
 		],
 		"BuildDays": 0,
-		"BuildCondition": "LOCATION_NAME Target Farm, !BUILDINGS_CONSTRUCTED Target tlitookilakin.FunkyBuildings_OminousEffigy 1, PLAYER_HAS_MAIL Any RarecrowSociety",
+		"BuildCondition": "LOCATION_NAME Target Farm, !BUILDINGS_CONSTRUCTED Target tlitoo.BuildEx_OminousEffigy 1, PLAYER_HAS_MAIL Any RarecrowSociety",
 		"Size": {
 			"X": 3,
 			"Y": 3
@@ -327,15 +327,15 @@
 			"X": 48,
 			"Y": 0
 		},
-		"DefaultAction": "tlitookilakin.FunkyBuildings_OminousEffigy",
+		"DefaultAction": "tlitoo.BuildEx_OminousEffigy",
 		"MagicalBuilding": true
 	},
 	"FieldStone": {
-		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.FieldStone.name]",
-		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.FieldStone.desc]",
-		"Texture": "Mods/tlitookilakin.FunkyBuildings/FieldStone",
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.FieldStone.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.FieldStone.desc]",
+		"Texture": "Mods/tlitoo.BuildEx/FieldStone",
 		"Builder": "Wizard",
-		"BuildingType": "FunkyBuildings.Buildings.FieldStone, FunkyBuildings",
+		"BuildingType": "BuildingsExpanded.Buildings.FieldStone, BuildingsExpanded",
 		"BuildCost": 20000,
 		"BuildMaterials": [
 			{
@@ -370,16 +370,16 @@
 			"Y": 0
 		},
 		"CustomFields": {
-			"tlitookilakin.FunkyBuildings_ParticleColor": "#FF88FC, #70FF00, #FFFF00, #00FFFF",
-			"tlitookilakin.FunkyBuildings_EffectRadius": "4",
-			"tlitookilakin.FunkyBuildings_BirdSpots": "0 -1 1 -2"
+			"tlitoo.BuildEx_ParticleColor": "#FF88FC, #70FF00, #FFFF00, #00FFFF",
+			"tlitoo.BuildEx_EffectRadius": "4",
+			"tlitoo.BuildEx_BirdSpots": "0 -1 1 -2"
 		}
 	},
 	"RainObelisk": {
-		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.rainObelisk.name]",
-		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.rainObelisk.desc]",
-		"Texture": "Mods/tlitookilakin.FunkyBuildings/RainObelisk",
-		"BuildingType": "FunkyBuildings.Buildings.RainObelisk, FunkyBuildings",
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.rainObelisk.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.rainObelisk.desc]",
+		"Texture": "Mods/tlitoo.BuildEx/RainObelisk",
+		"BuildingType": "BuildingsExpanded.Buildings.RainObelisk, BuildingsExpanded",
 		"Builder": "Wizard",
 		"MagicalConstruction": true,
 		"BuildCost": 1000000,
@@ -410,16 +410,16 @@
 			"Width": 48,
 			"Height": 128
 		},
-		"DefaultAction": "tlitookilakin.FunkyBuildings_ActivateRain",
-		"BuildCondition": "tlitookilakin.FunkyBuildings_RAIN_TOTEM_ALLOWED Target, !BUILDINGS_CONSTRUCTED Target tlitookilakin.FunkyBuildings_RainObelisk",
+		"DefaultAction": "tlitoo.BuildEx_ActivateRain",
+		"BuildCondition": "tlitoo.BuildEx_RAIN_TOTEM_ALLOWED Target, !BUILDINGS_CONSTRUCTED Target tlitoo.BuildEx_RainObelisk",
 		"CustomFields": {
-			"tlitookilakin.FunkyBuildings_BirdSpots": "0 -5 2 -6"
+			"tlitoo.BuildEx_BirdSpots": "0 -5 2 -6"
 		}
 	},
 	"Stockpile": {
-		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Stockpile.name]",
-		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.Stockpile.desc]",
-		"Texture": "Mods/tlitookilakin.FunkyBuildings/Stockpile",
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.Stockpile.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.Stockpile.desc]",
+		"Texture": "Mods/tlitoo.BuildEx/Stockpile",
 		"Builder": "Robin",
 		"BuildCost": 10000,
 		"BuildMaterials": [
@@ -451,7 +451,7 @@
 			"Height": 80
 		},
 		"ModData": {
-			"tlitookilakin.FunkyBuildings_Capacity": "300"
+			"tlitoo.BuildEx_Capacity": "300"
 		},
 		"Chests": [
 			{
@@ -459,15 +459,15 @@
 				"Type": "Chest"
 			}
 		],
-		"DefaultAction": "tlitookilakin.FunkyBuildings_OpenStockpile"
+		"DefaultAction": "tlitoo.BuildEx_OpenStockpile"
 	},
 	"BigStockpile": {
-		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.BigStockpile.name]",
-		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.BigStockpile.desc]",
-		"Texture": "Mods/tlitookilakin.FunkyBuildings/BigStockpile",
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.BigStockpile.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.BigStockpile.desc]",
+		"Texture": "Mods/tlitoo.BuildEx/BigStockpile",
 		"Builder": "Robin",
 		"BuildCost": 25000,
-		"BuildingToUpgrade": "tlitookilakin.FunkyBuildings_Stockpile",
+		"BuildingToUpgrade": "tlitoo.BuildEx_Stockpile",
 		"BuildMaterials": [
 			{
 				"Id": "hardwood",
@@ -497,7 +497,7 @@
 			"Height": 80
 		},
 		"ModData": {
-			"tlitookilakin.FunkyBuildings_Capacity": "600"
+			"tlitoo.BuildEx_Capacity": "600"
 		},
 		"Chests": [
 			{
@@ -505,15 +505,15 @@
 				"Type": "Chest"
 			}
 		],
-		"DefaultAction": "tlitookilakin.FunkyBuildings_OpenStockpile"
+		"DefaultAction": "tlitoo.BuildEx_OpenStockpile"
 	},
 	"DeluxeStockpile": {
-		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.DeluxeStockpile.name]",
-		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.DeluxeStockpile.desc]",
-		"Texture": "Mods/tlitookilakin.FunkyBuildings/DeluxeStockpile",
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.DeluxeStockpile.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.DeluxeStockpile.desc]",
+		"Texture": "Mods/tlitoo.BuildEx/DeluxeStockpile",
 		"Builder": "Robin",
 		"BuildCost": 40000,
-		"BuildingToUpgrade": "tlitookilakin.FunkyBuildings_BigStockpile",
+		"BuildingToUpgrade": "tlitoo.BuildEx_BigStockpile",
 		"BuildMaterials": [
 			{
 				"Id": "hardwood",
@@ -543,7 +543,7 @@
 			"Height": 80
 		},
 		"ModData": {
-			"tlitookilakin.FunkyBuildings_Capacity": "900"
+			"tlitoo.BuildEx_Capacity": "900"
 		},
 		"Chests": [
 			{
@@ -551,13 +551,13 @@
 				"Type": "Chest"
 			}
 		],
-		"DefaultAction": "tlitookilakin.FunkyBuildings_OpenStockpile"
+		"DefaultAction": "tlitoo.BuildEx_OpenStockpile"
 	},
 	"MagicPond": {
-		"Name": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.MagicPond.name]",
-		"Description": "[LocalizedText Mods/tlitookilakin.FunkyBuildings/Strings:buildings.MagicPond.desc]",
-		"Texture": "Mods/tlitookilakin.FunkyBuildings/MagicPond",
-		"BuildingType": "FunkyBuildings.Buildings.MagicPond, FunkyBuildings",
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.MagicPond.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.MagicPond.desc]",
+		"Texture": "Mods/tlitoo.BuildEx/MagicPond",
+		"BuildingType": "BuildingsExpanded.Buildings.MagicPond, BuildingsExpanded",
 		"Builder": "Wizard",
 		"BuildCost": 100000,
 		"BuildMaterials": [

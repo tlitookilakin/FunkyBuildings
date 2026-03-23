@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 
-namespace FunkyBuildings.Framework;
+namespace BuildingsExpanded.Framework;
 
 public class SpriteEmitter
 {

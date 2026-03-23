@@ -1,4 +1,4 @@
-﻿namespace FunkyBuildings.Data;
+﻿namespace BuildingsExpanded.Data;
 
 public class ExtraData
 {

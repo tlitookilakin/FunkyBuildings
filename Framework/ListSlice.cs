@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace FunkyBuildings.Framework
+namespace BuildingsExpanded.Framework
 {
 	public class ListSlice<T> : IList<T> where T : class
 	{

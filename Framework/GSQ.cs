@@ -5,7 +5,7 @@ using StarModGen.Lib;
 using System.Reflection;
 using static StardewValley.GameStateQuery;
 
-namespace FunkyBuildings.Framework
+namespace BuildingsExpanded.Framework
 {
 	internal static class GSQ
 	{

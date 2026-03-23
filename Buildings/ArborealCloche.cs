@@ -1,5 +1,5 @@
-﻿using FunkyBuildings.Framework;
-using FunkyBuildings.UI;
+﻿using BuildingsExpanded.Framework;
+using BuildingsExpanded.UI;
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,7 +11,7 @@ using System.Reflection.Emit;
 using System.Xml.Serialization;
 using SObject = StardewValley.Object;
 
-namespace FunkyBuildings.Buildings;
+namespace BuildingsExpanded.Buildings;
 
 [XmlType("Mods_" + MOD_ID + "ArborealCloche")]
 public class ArborealCloche : EffectBuilding
@@ -41,13 +41,13 @@ public class ArborealCloche : EffectBuilding
 		}
 	}
 
-    protected override EffectState effectState 
+	protected override EffectState effectState 
 	{ 
 		get => state; 
 		set => state = value;
 	}
 
-    public ArborealCloche() : base() { }
+	public ArborealCloche() : base() { }
 	public ArborealCloche(Vector2 tile) : base(tile, MOD_ID + "_AborealCloche") { }
 
 	public override bool doAction(Vector2 tileLocation, Farmer who)
@@ -62,8 +62,8 @@ public class ArborealCloche : EffectBuilding
 		return true;
 	}
 
-    public override bool isActionableTile(int xTile, int yTile, Farmer who)
-    {
+	public override bool isActionableTile(int xTile, int yTile, Farmer who)
+	{
 		if (base.isActionableTile(xTile, yTile, who))
 			return true;
 
@@ -71,7 +71,7 @@ public class ArborealCloche : EffectBuilding
 			return true;
 
 		return false;
-    }
+	}
 
 	protected override void initNetFields()
 	{
@@ -175,15 +175,15 @@ public class ArborealCloche : EffectBuilding
 		}
 	}
 
-    protected override Effect GetEffect()
-    {
+	protected override Effect GetEffect()
+	{
 		return Assets.assets.GlassBeams;
-    }
+	}
 
-    protected override void UpdateParams(Effect effect)
-    {
+	protected override void UpdateParams(Effect effect)
+	{
 		effect.Parameters["Offset"].SetValue(Game1.viewport.Location.ToVector());
-    }
+	}
 
 	[ModEvent]
 	internal static void Init(object? _, SetupEventArgs e)
@@ -222,7 +222,7 @@ public class ArborealCloche : EffectBuilding
 		return inSeason || clochedTrees.Contains(__instance);
 	}
 
-    ~ArborealCloche()
+	~ArborealCloche()
 	{
 		if (Tree is FruitTree ft)
 			clochedTrees.Remove(ft);

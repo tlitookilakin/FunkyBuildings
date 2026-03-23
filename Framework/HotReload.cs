@@ -4,7 +4,7 @@ using StardewValley.Extensions;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace FunkyBuildings.Framework;
+namespace BuildingsExpanded.Framework;
 
 internal static class HotReload
 {

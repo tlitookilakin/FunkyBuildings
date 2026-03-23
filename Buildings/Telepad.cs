@@ -5,7 +5,7 @@ using StardewValley.Buildings;
 using StardewValley.Menus;
 using System.Xml.Serialization;
 
-namespace FunkyBuildings.Buildings;
+namespace BuildingsExpanded.Buildings;
 
 // TODO data entry
 [XmlType("Mods_" + MOD_ID + "_Telepad")]

@@ -1,6 +1,6 @@
 ﻿using StardewValley.GameData;
 
-namespace FunkyBuildings.Data;
+namespace BuildingsExpanded.Data;
 
 public class AlvearyDrop : GenericSpawnItemDataWithCondition
 {

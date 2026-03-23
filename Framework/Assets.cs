@@ -1,4 +1,4 @@
-﻿using FunkyBuildings.Data;
+﻿using BuildingsExpanded.Data;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewValley;
@@ -6,7 +6,7 @@ using StardewValley.GameData;
 using StardewValley.GameData.Locations;
 using StarModGen.Lib;
 
-namespace FunkyBuildings.Framework
+namespace BuildingsExpanded.Framework
 {
 	internal partial class Assets
 	{

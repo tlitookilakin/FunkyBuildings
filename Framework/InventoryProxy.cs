@@ -2,7 +2,7 @@
 using StardewValley.Inventories;
 using StarModGen.Lib;
 
-namespace FunkyBuildings.Framework
+namespace BuildingsExpanded.Framework
 {
 	public class InventoryProxy : IDisposable
 	{

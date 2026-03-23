@@ -5,8 +5,8 @@
 			"Y": 2
 		},
 		"CreateOnLoad": {
-			"MapPath": "Maps/tlitookilakin.FunkyBuildings_IslandCellar",
-			"Type": "FunkyBuildings.Locations.IslandCellar, FunkyBuildings"
+			"MapPath": "Maps/tlitoo.BuildEx_IslandCellar",
+			"Type": "BuildingsExpanded.Locations.IslandCellar, BuildingsExpanded"
 		}
 	}
 }

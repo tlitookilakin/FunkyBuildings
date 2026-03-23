@@ -1,4 +1,4 @@
-﻿using FunkyBuildings.UI;
+﻿using BuildingsExpanded.UI;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Extensions;
@@ -7,7 +7,7 @@ using StardewValley.Objects;
 using StarModGen.Lib;
 using System.Diagnostics;
 
-namespace FunkyBuildings.Framework
+namespace BuildingsExpanded.Framework
 {
 	internal static class Debug
 	{
@@ -19,8 +19,8 @@ namespace FunkyBuildings.Framework
 			helper = e.Helper;
 			helper.ConsoleCommands.Add("fb_debug", "debug command", DoDebug);
 			helper.ConsoleCommands.Add("fb_construct", "show free construction menu", ShowDebugConstruct);
-            HotReload.SourceFileChanged += SourceChanged;
-            HotReload.FileUpdated += FileUpdated;
+			HotReload.SourceFileChanged += SourceChanged;
+			HotReload.FileUpdated += FileUpdated;
 			e.Harmony
 				.With<CarpenterMenu>(nameof(CarpenterMenu.DoesFarmerHaveEnoughResourcesToBuild)).Postfix(ForceFree);
 
@@ -29,7 +29,7 @@ namespace FunkyBuildings.Framework
 
 #if DEBUG
 
-        private static readonly Chest chest = new();
+		private static readonly Chest chest = new();
 		private static IModHelper helper = null!;
 		private static bool ShouldBeFree = false;
 

@@ -1,12 +1,12 @@
-﻿using FunkyBuildings.Buildings;
-using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Buildings;
+using BuildingsExpanded.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.Extensions;
 using StardewValley.Menus;
 
-namespace FunkyBuildings.UI;
+namespace BuildingsExpanded.UI;
 
 // TODO add close button
 public class ClocheMenu : MenuWithInventory

@@ -1,4 +1,4 @@
-﻿using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Framework;
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Netcode;
@@ -8,7 +8,7 @@ using StarModGen.Lib;
 using System.Reflection.Emit;
 using System.Xml.Serialization;
 
-namespace FunkyBuildings.Buildings;
+namespace BuildingsExpanded.Buildings;
 
 // TODO customize building in json
 [XmlType("Mods_" + MOD_ID + "_Effigy")]

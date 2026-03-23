@@ -15,7 +15,7 @@
 	},
 	"Runes": {
 		"Id": "Runes",
-		"Texture": "Mods/tlitookilakin.FunkyBuildings/Particles",
+		"Texture": "Mods/tlitoo.BuildEx/Particles",
 		"SourceRect": {
 			"X": 0,
 			"Y": 0,

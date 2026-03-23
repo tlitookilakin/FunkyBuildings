@@ -1,11 +1,11 @@
-﻿using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Framework;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StarModGen.Lib;
 
-namespace FunkyBuildings.Integration
+namespace BuildingsExpanded.Integration
 {
 	public interface IBetterBeehouses
 	{

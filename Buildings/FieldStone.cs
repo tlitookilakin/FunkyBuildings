@@ -1,4 +1,4 @@
-﻿using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Netcode;
@@ -9,7 +9,7 @@ using StardewValley.TerrainFeatures;
 using StarModGen.Lib;
 using System.Xml.Serialization;
 
-namespace FunkyBuildings.Buildings;
+namespace BuildingsExpanded.Buildings;
 
 [XmlType("Mods_" + MOD_ID + "_FieldStone")]
 public class FieldStone : EffectBuilding
@@ -84,11 +84,11 @@ public class FieldStone : EffectBuilding
 		}
 	}
 
-    public override void draw(SpriteBatch b)
-    {
-        base.draw(b);
+	public override void draw(SpriteBatch b)
+	{
+		base.draw(b);
 		particles.Draw(b, Game1.GlobalToLocal(new(tileX.Value * 64f, tileY.Value * 64f)));
-    }
+	}
 
 
 	public override BuildingData ReloadBuildingData(bool forUpgrade = false, bool forConstruction = false)

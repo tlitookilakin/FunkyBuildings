@@ -4,7 +4,7 @@ using StardewValley;
 using StardewValley.Buildings;
 using System.Xml.Serialization;
 
-namespace FunkyBuildings.Buildings;
+namespace BuildingsExpanded.Buildings;
 
 [XmlType("Mods_" + MOD_ID + "_Mailbox")]
 public class Mailbox : Building

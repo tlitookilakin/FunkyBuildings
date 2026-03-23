@@ -6,7 +6,7 @@ using StardewValley.Locations;
 using StardewValley.Objects;
 using System.Xml.Serialization;
 
-namespace FunkyBuildings.Locations;
+namespace BuildingsExpanded.Locations;
 
 [XmlType("Mods_" + MOD_ID + "_IslandCellar")]
 public class IslandCellar : DecoratableLocation
@@ -38,21 +38,21 @@ public class IslandCellar : DecoratableLocation
 		}
 	}
 
-    public override void UpdateWhenCurrentLocation(GameTime time)
-    {
-        base.UpdateWhenCurrentLocation(time);
+	public override void UpdateWhenCurrentLocation(GameTime time)
+	{
+		base.UpdateWhenCurrentLocation(time);
 		_parrots?.Update(time);
-    }
+	}
 
-    public override void drawAboveAlwaysFrontLayer(SpriteBatch b)
-    {
-        base.drawAboveAlwaysFrontLayer(b);
+	public override void drawAboveAlwaysFrontLayer(SpriteBatch b)
+	{
+		base.drawAboveAlwaysFrontLayer(b);
 		_parrots?.Draw(b);
-    }
+	}
 
-    protected override void resetLocalState()
-    {
-        base.resetLocalState();
+	protected override void resetLocalState()
+	{
+		base.resetLocalState();
 		_parrotTextures = Game1.temporaryContent.Load<Texture2D>("LooseSprites\\parrots");
 		var perches = GetParrotPerches();
 
@@ -63,10 +63,10 @@ public class IslandCellar : DecoratableLocation
 		}
 
 		_parrots = new(_parrotTextures, 3, 24, 24, new Vector2(12f, 19f), perches, [])
-        {
-            peckDuration = 0
-        };
-        for (int i = 0; i < perches.Length / 2; i++)
+		{
+			peckDuration = 0
+		};
+		for (int i = 0; i < perches.Length / 2; i++)
 		{
 			_parrots.AddBird(Game1.random.Next(0, 4));
 		}

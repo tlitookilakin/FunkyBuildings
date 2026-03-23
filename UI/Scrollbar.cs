@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using StardewValley;
 using StardewValley.Menus;
 
-namespace FunkyBuildings.UI
+namespace BuildingsExpanded.UI
 {
 	public class Scrollbar
 	{

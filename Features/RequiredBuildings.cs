@@ -1,10 +1,10 @@
-﻿using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Framework;
 using StardewValley;
 using StardewValley.Buildings;
 using StardewValley.Menus;
 using StarModGen.Lib;
 
-namespace FunkyBuildings.Features;
+namespace BuildingsExpanded.Features;
 
 internal class RequiredBuildings
 {

@@ -2,7 +2,7 @@
 using StardewValley.GameData.Buildings;
 using StarModGen.Lib;
 
-namespace FunkyBuildings.Framework
+namespace BuildingsExpanded.Framework
 {
 	[Config(false)]
 	public partial class Config

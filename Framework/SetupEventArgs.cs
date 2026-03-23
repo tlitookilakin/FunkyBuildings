@@ -1,7 +1,7 @@
 ﻿using StardewModdingAPI;
 using StarModGen.Utils;
 
-namespace FunkyBuildings.Framework
+namespace BuildingsExpanded.Framework
 {
 	internal class SetupEventArgs(Mod mod, Config cfg)
 	{

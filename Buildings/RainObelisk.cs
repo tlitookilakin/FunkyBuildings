@@ -1,11 +1,11 @@
-﻿using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StarModGen.Lib;
 using System.Xml.Serialization;
 
-namespace FunkyBuildings.Buildings;
+namespace BuildingsExpanded.Buildings;
 
 [XmlType("Mods_" + MOD_ID + "_RainObelisk")]
 public class RainObelisk : EffectBuilding
@@ -13,7 +13,7 @@ public class RainObelisk : EffectBuilding
 	private static EffectState _state = new() { IncrementDepth = true, DepthOffset = 1 };
 	private static Vector4 stormy = Utility.StringToColor("#4E5F70")?.ToVector4() ?? Vector4.One;
 
-    protected override EffectState effectState 
+	protected override EffectState effectState 
 	{ 
 		get => _state; 
 		set => _state = value; 
@@ -22,7 +22,7 @@ public class RainObelisk : EffectBuilding
 	public RainObelisk() : base() { }
 	public RainObelisk(Vector2 tile) : base(tile, MOD_ID + "_RainObelisk") { }
 
-    [ModEvent]
+	[ModEvent]
 	internal static void Init(object? s, SetupEventArgs ev)
 	{
 		GameLocation.RegisterTileAction(MOD_ID + "_ActivateRain", ActivateRain);
@@ -81,12 +81,12 @@ public class RainObelisk : EffectBuilding
 		return true;
 	}
 
-    protected override Effect GetEffect()
-    {
+	protected override Effect GetEffect()
+	{
 		return Assets.assets.WeatherOverlay;
-    }
+	}
 
-    protected override void UpdateParams(Effect effect)
+	protected override void UpdateParams(Effect effect)
 	{
 		effect.Parameters["Tint"]?.SetValue(GetParentLocation() is GameLocation where && where.IsRainingHere() ? stormy : Vector4.One);
 		effect.Parameters["Time"]?.SetValue((float)Game1.currentGameTime.TotalGameTime.TotalSeconds);

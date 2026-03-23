@@ -1,4 +1,4 @@
-﻿using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Framework;
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Netcode;
@@ -15,7 +15,7 @@ using StarModGen.Lib;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace FunkyBuildings.Features;
+namespace BuildingsExpanded.Features;
 
 public class BirdConstruction
 {

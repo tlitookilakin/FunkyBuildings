@@ -4,7 +4,7 @@ using StardewValley;
 using StardewValley.Internal;
 using StardewValley.Menus;
 
-namespace FunkyBuildings.UI
+namespace BuildingsExpanded.UI
 {
 	internal class ItemSearch : TextBox
 	{

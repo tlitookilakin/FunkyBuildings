@@ -1,4 +1,4 @@
-﻿using FunkyBuildings.Framework;
+﻿using BuildingsExpanded.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
@@ -8,7 +8,7 @@ using StardewValley.Buildings;
 using StardewValley.Menus;
 using StardewValley.Objects;
 
-namespace FunkyBuildings.UI
+namespace BuildingsExpanded.UI
 {
 	public class StockpileMenu : MenuWithInventory
 	{

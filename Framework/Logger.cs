@@ -1,7 +1,7 @@
-﻿global using static FunkyBuildings.Framework.Logger;
+﻿global using static BuildingsExpanded.Framework.Logger;
 using StardewModdingAPI;
 
-namespace FunkyBuildings.Framework
+namespace BuildingsExpanded.Framework
 {
 	public class Logger(IMonitor monitor)
 	{

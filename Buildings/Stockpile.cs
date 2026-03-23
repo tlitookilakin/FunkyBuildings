@@ -1,12 +1,12 @@
-﻿using FunkyBuildings.Framework;
-using FunkyBuildings.UI;
+﻿using BuildingsExpanded.Framework;
+using BuildingsExpanded.UI;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Buildings;
 using StardewValley.Objects;
 using StarModGen.Lib;
 
-namespace FunkyBuildings.Buildings;
+namespace BuildingsExpanded.Buildings;
 
 public class Stockpile
 {
