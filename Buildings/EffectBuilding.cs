@@ -25,12 +25,21 @@ public abstract class EffectBuilding : Building
 		if (GetData() is not BuildingData data)
 			return;
 
+		float buildDepth = (tileY.Value * 64f + tilesHigh.Value * 64f - data.SortTileOffset * 64f) / 10000f;
+
+		buildDepth =
+			effectState.IncrementDepth ?
+				effectState.DepthOffset < 0f ? MathF.BitDecrement(buildDepth) :
+				effectState.DepthOffset > 0f ? MathF.BitIncrement(buildDepth) :
+				buildDepth :
+			buildDepth + effectState.DepthOffset;
+
 		DrawEffect(
 			b,
 			Game1.GlobalToLocal(new Vector2(tileX.Value * 64f, (tileY.Value + tilesHigh.Value) * 64f - data.SourceRect.Height * 4f) + data.DrawOffset * 4f),
-			((tileY.Value + tilesHigh.Value) * 64f + .1f) * .0001f,
+			buildDepth,
 			data,
-			GetParentLocation()?.GetSeasonIndex() ?? 0,
+			GetParentLocation()?.GetSeasonIndex() ?? Game1.seasonIndex,
 			alpha
 		);
 	}
@@ -45,7 +54,7 @@ public abstract class EffectBuilding : Building
 		y += (int)(data.DrawOffset.Y * 4f);
 		var pos = new Vector2(x, y);
 
-		float buildDepth = (tilesHigh.Value * 64 - data.SortTileOffset * 64f) / 10000f;
+		float buildDepth = (tilesHigh.Value * 64f - data.SortTileOffset * 64f) / 10000f;
 
 		buildDepth = 
 			effectState.IncrementDepth ?
@@ -54,7 +63,7 @@ public abstract class EffectBuilding : Building
 				buildDepth :
 			buildDepth + effectState.DepthOffset;
 
-		DrawEffect(b, pos, buildDepth, data, Game1.currentLocation?.GetSeasonIndex() ?? 0);
+		DrawEffect(b, pos, buildDepth, data, Game1.currentLocation?.GetSeasonIndex() ?? Game1.seasonIndex);
 	}
 
 	protected void DrawEffect(SpriteBatch b, Vector2 position, float depth, BuildingData data, int season = 0, float a = 1f)

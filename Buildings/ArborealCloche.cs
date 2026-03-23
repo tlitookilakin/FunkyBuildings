@@ -1,11 +1,13 @@
 ﻿using FunkyBuildings.Framework;
 using FunkyBuildings.UI;
+using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Netcode;
 using StardewValley;
 using StardewValley.TerrainFeatures;
 using StarModGen.Lib;
+using System.Reflection.Emit;
 using System.Xml.Serialization;
 using SObject = StardewValley.Object;
 
@@ -187,13 +189,30 @@ public class ArborealCloche : EffectBuilding
 	internal static void Init(object? _, SetupEventArgs e)
 	{
 		e.Harmony
-			.With<FruitTree>(nameof(FruitTree.IsGrowthBlocked)).Postfix(IsGrowthBlocked)
+			.With<FruitTree>(nameof(FruitTree.dayUpdate)).Transpiler(InsertOverride)
 			.With(nameof(FruitTree.IsInSeasonHere)).Postfix(IsInSeason);
 	}
 
-	private static bool IsGrowthBlocked(bool blocked, FruitTree __instance)
+	private static IEnumerable<CodeInstruction> InsertOverride(IEnumerable<CodeInstruction> src)
 	{
-		if (clochedTrees.Contains(__instance))
+		var il = new CodeMatcher(src);
+
+		il
+			.MatchStartForward(
+				new CodeMatch(OpCodes.Call, typeof(FruitTree).GetMethod(nameof(FruitTree.IsGrowthBlocked)))
+			)
+			.Advance(1)
+			.InsertAndAdvance(
+				new(OpCodes.Ldarg_0),
+				new(OpCodes.Call, typeof(ArborealCloche).GetMethod(nameof(IsGrowthBlocked)))
+			);
+
+		return il.InstructionEnumeration();
+	}
+
+	public static bool IsGrowthBlocked(bool blocked, FruitTree tree)
+	{
+		if (clochedTrees.Contains(tree))
 			return false;
 		return blocked;
 	}
