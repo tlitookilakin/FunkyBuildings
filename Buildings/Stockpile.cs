@@ -31,7 +31,7 @@ public class Stockpile
 		if (b.GetBuildingChest("storage") is not Chest chest)
 			Print.Warn($"Storage missing for stockpile at {b.tileX.Value}, {b.tileY.Value} in {b.parentLocationName.Value}");
 
-		else if (!Building.TryGetData(b.buildingType.Value, out var data) || !data.CustomFields.TryGetValue("Stockpile_Capacity", out var val))
+		else if (!b.TryGetCustomField(MOD_ID + "_StockpileCapacity", out var val))
 			Print.Warn($"Missing capacity on stockpile at {b.tileX.Value}, {b.tileY.Value} in {b.parentLocationName.Value}");
 
 		else if (!int.TryParse(val, out int capacity) || capacity <= 0)

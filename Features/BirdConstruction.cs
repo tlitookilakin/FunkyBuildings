@@ -10,7 +10,6 @@ using StardewValley.Buildings;
 using StardewValley.Locations;
 using StardewValley.Menus;
 using StardewValley.Mods;
-using StardewValley.Objects;
 using StarModGen.Lib;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -30,8 +29,10 @@ public class BirdConstruction
 		helper = e.Helper;
 		e.Harmony
 			.With<Building>(nameof(Building.performActionOnConstruction)).Postfix(DoBirdEffects)
+			.With(nameof(Building.showUpgradeAnimation)).Postfix(DoBirdEffects)
 			.With<CarpenterMenu>(nameof(CarpenterMenu.robinConstructionMessage)).Prefix(HideRobinYap)
 			.With(nameof(CarpenterMenu.draw)).Transpiler(InjectMenuTint)
+			.With(nameof(CarpenterMenu.receiveLeftClick)).Transpiler(ModifyUpgradeDelay)
 			.With<IslandNorth>(nameof(IslandNorth.checkAction)).Prefix(ReplaceTrader);
 
 		var hook = FindBuildHook(PatchProcessor.GetOriginalInstructions(typeof(CarpenterMenu).GetMethod(nameof(CarpenterMenu.receiveLeftClick))));
@@ -41,12 +42,17 @@ public class BirdConstruction
 
 	private static void DoBirdEffects(Building __instance, GameLocation location)
 	{
-		if (__instance.GetData().Builder == "IslandBird")
+		if (__instance.upgradeName.Value is not string upgrade || !Building.TryGetData(upgrade, out var data))
+			data = __instance.GetData();
+
+		if (data?.Builder == "IslandBird")
 		{
 			StartConstructionAnimation(__instance, location);
-			__instance.daysOfConstructionLeft.Value = 0;
-			__instance.daysUntilUpgrade.Value = 0;
-			newTimer(__instance).Value = 2000;
+			if (__instance.upgradeName.Value == null)
+			{
+				__instance.daysOfConstructionLeft.Value = 0;
+				newTimer(__instance).Value = 2000;
+			}
 		}
 	}
 
@@ -114,13 +120,33 @@ public class BirdConstruction
 			).Advance(1)
 			.Insert(
 				new(OpCodes.Ldarg_0),
-				new(OpCodes.Call, typeof(BirdConstruction).GetMethod(nameof(ModifyTime), BindingFlags.Static | BindingFlags.NonPublic))
+				new(OpCodes.Call, typeof(BirdConstruction).GetMethod(nameof(ModifyTime)))
 			);
 
 		return il.InstructionEnumeration();
 	}
 
-	private static int ModifyTime(int original, CarpenterMenu menu)
+	private static IEnumerable<CodeInstruction> ModifyUpgradeDelay(IEnumerable<CodeInstruction> instructions)
+	{
+		var il = new CodeMatcher(instructions);
+
+		il
+			.MatchEndForward(
+				new(OpCodes.Ldarg_0),
+				new(OpCodes.Ldftn, typeof(CarpenterMenu).GetMethod(nameof(CarpenterMenu.returnToCarpentryMenuAfterSuccessfulBuild))),
+				new(OpCodes.Newobj),
+				new(OpCodes.Ldc_I4)
+			)
+			.Advance(1)
+			.InsertAndAdvance(
+				new(OpCodes.Ldarg_0),
+				new(OpCodes.Call, typeof(BirdConstruction).GetMethod(nameof(ModifyTime)))
+			);
+
+		return il.InstructionEnumeration();
+	}
+
+	public static int ModifyTime(int original, CarpenterMenu menu)
 	{
 		return menu.Builder is "IslandBird" ? 4500 : original;
 	}
@@ -133,10 +159,7 @@ public class BirdConstruction
 		StartConstructionAnimation(
 			where ??= building.GetParentLocation(),
 			bounds,
-			() => {
-				building.daysUntilUpgrade.Value = 0;
-				building.daysOfConstructionLeft.Value = 0;
-			},
+			() => building.FinishConstruction(),
 			"built_" + building.buildingType.Value
 		);
 	}

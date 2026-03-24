@@ -419,7 +419,7 @@
 	"Stockpile": {
 		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.Stockpile.name]",
 		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.Stockpile.desc]",
-		"Texture": "Mods/tlitoo.BuildEx/Stockpile",
+		"Texture": "Mods/tlitoo.BuildEx/Stockpiles",
 		"Builder": "Robin",
 		"BuildCost": 10000,
 		"BuildMaterials": [
@@ -446,12 +446,12 @@
 		},
 		"SourceRect": {
 			"X": 0,
-			"Y": 0,
+			"Y": 32,
 			"Width": 48,
-			"Height": 80
+			"Height": 64
 		},
-		"ModData": {
-			"tlitoo.BuildEx_Capacity": "300"
+		"CustomFields": {
+			"tlitoo.BuildEx_StockpileCapacity": "300"
 		},
 		"Chests": [
 			{
@@ -459,12 +459,12 @@
 				"Type": "Chest"
 			}
 		],
-		"DefaultAction": "tlitoo.BuildEx_OpenStockpile"
+		"DefaultAction": "tlitoo.BuildEx_Stockpile"
 	},
 	"BigStockpile": {
 		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.BigStockpile.name]",
 		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.BigStockpile.desc]",
-		"Texture": "Mods/tlitoo.BuildEx/BigStockpile",
+		"Texture": "Mods/tlitoo.BuildEx/Stockpiles",
 		"Builder": "Robin",
 		"BuildCost": 25000,
 		"BuildingToUpgrade": "tlitoo.BuildEx_Stockpile",
@@ -491,13 +491,13 @@
 			"Y": 3
 		},
 		"SourceRect": {
-			"X": 0,
+			"X": 48,
 			"Y": 0,
 			"Width": 48,
-			"Height": 80
+			"Height": 96
 		},
-		"ModData": {
-			"tlitoo.BuildEx_Capacity": "600"
+		"CustomFields": {
+			"tlitoo.BuildEx_StockpileCapacity": "600"
 		},
 		"Chests": [
 			{
@@ -505,13 +505,13 @@
 				"Type": "Chest"
 			}
 		],
-		"DefaultAction": "tlitoo.BuildEx_OpenStockpile"
+		"DefaultAction": "tlitoo.BuildEx_Stockpile"
 	},
 	"DeluxeStockpile": {
 		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.DeluxeStockpile.name]",
 		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.DeluxeStockpile.desc]",
-		"Texture": "Mods/tlitoo.BuildEx/DeluxeStockpile",
-		"Builder": "Robin",
+		"Texture": "Mods/tlitoo.BuildEx/Stockpiles",
+		"Builder": "IslandBird",
 		"BuildCost": 40000,
 		"BuildingToUpgrade": "tlitoo.BuildEx_BigStockpile",
 		"BuildMaterials": [
@@ -537,13 +537,13 @@
 			"Y": 3
 		},
 		"SourceRect": {
-			"X": 0,
+			"X": 96,
 			"Y": 0,
 			"Width": 48,
-			"Height": 80
+			"Height": 96
 		},
-		"ModData": {
-			"tlitoo.BuildEx_Capacity": "900"
+		"CustomFields": {
+			"tlitoo.BuildEx_StockpileCapacity": "900"
 		},
 		"Chests": [
 			{
@@ -551,7 +551,7 @@
 				"Type": "Chest"
 			}
 		],
-		"DefaultAction": "tlitoo.BuildEx_OpenStockpile"
+		"DefaultAction": "tlitoo.BuildEx_Stockpile"
 	},
 	"MagicPond": {
 		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.MagicPond.name]",

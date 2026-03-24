@@ -142,8 +142,11 @@ namespace BuildingsExpanded.UI
 
 			if (scroller.Contains(x, y) && Game1.input.GetMouseState().LeftButton is ButtonState.Pressed)
 			{
-				int my = Game1.getMouseY();
-				Offset = (my * (RowCount - VisibleRowCount) / scroller.Height) - VisibleRowCount / 2;
+				int my = y;
+				int scroll = RowCount - VisibleRowCount;
+				int thumb = (VisibleRowCount * scroller.Height) / scroll;
+				my -= scroller.Y + thumb / 2;
+				Offset = (scroll * my / (scroller.Height - thumb));
 			}
 		}
 
