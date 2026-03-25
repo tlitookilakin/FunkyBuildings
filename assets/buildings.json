@@ -121,7 +121,7 @@
 		],
 		"DrawShadow": false,
 		"DefaultAction": "FarmObelisk",
-		"CustomFields": {
+		"Metadata": {
 			"tlitoo.BuildEx_BirdSpots": "0 0 1 0 2 0"
 		}
 	},
@@ -272,7 +272,7 @@
 				}
 			}
 		],
-		"CustomFields": {
+		"Metadata": {
 			"tlitoo.BuildEx_BirdSpots": "0 -4 1 -5"
 		},
 		"DrawShadow": false,
@@ -371,7 +371,9 @@
 		},
 		"CustomFields": {
 			"tlitoo.BuildEx_ParticleColor": "#FF88FC, #70FF00, #FFFF00, #00FFFF",
-			"tlitoo.BuildEx_EffectRadius": "4",
+			"tlitoo.BuildEx_EffectRadius": "4"
+		},
+		"Metadata": {
 			"tlitoo.BuildEx_BirdSpots": "0 -1 1 -2"
 		}
 	},
@@ -412,7 +414,7 @@
 		},
 		"DefaultAction": "tlitoo.BuildEx_ActivateRain",
 		"BuildCondition": "tlitoo.BuildEx_RAIN_TOTEM_ALLOWED Target, !BUILDINGS_CONSTRUCTED Target tlitoo.BuildEx_RainObelisk",
-		"CustomFields": {
+		"Metadata": {
 			"tlitoo.BuildEx_BirdSpots": "0 -5 2 -6"
 		}
 	},

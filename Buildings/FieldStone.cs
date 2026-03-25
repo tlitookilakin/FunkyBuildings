@@ -96,7 +96,7 @@ public class FieldStone : EffectBuilding
 		var data = base.ReloadBuildingData(forUpgrade, forConstruction);
 
 		_colors = [];
-		if (this.TryGetCustomField(data, MOD_ID + "_EffectRadius", out var s) && int.TryParse(s, out var r))
+		if (data.TryGetCustomField(MOD_ID + "_EffectRadius", out var s) && int.TryParse(s, out var r))
 			Radius = r;
 
 		return data;

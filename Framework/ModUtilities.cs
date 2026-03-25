@@ -72,10 +72,10 @@ namespace BuildingsExpanded.Framework
 
 		public static bool TryGetCustomField(this Building b, string key, [NotNullWhen(true)] out string? value)
 		{
-			return TryGetCustomField(b, b?.GetData(), key, out value);
+			return TryGetCustomField(b?.GetData(), key, out value);
 		}
 
-		public static bool TryGetCustomField(this Building b, BuildingData? data, string key, [NotNullWhen(true)] out string? value)
+		public static bool TryGetCustomField(this BuildingData? data, string key, [NotNullWhen(true)] out string? value)
 		{
 			value = null;
 
