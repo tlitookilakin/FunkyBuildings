@@ -41,9 +41,11 @@
 		<AdditionalFiles Include="assets/exteriors/magicpond.png" GameAssetLoad="/MagicPond" />
 		<AdditionalFiles Include="assets/exteriors/rain_obelisk.png" GameAssetLoad="/RainObelisk" />
 		<AdditionalFiles Include="assets/exteriors/stockpiles.png" GameAssetLoad="/Stockpiles" />
+		<AdditionalFiles Include="assets/exteriors/atrium.png" GameAssetLoad="/Atrium" />
 		<AdditionalFiles Include="assets/misc/particles.png" GameAssetLoad="/Particles" />
 		<AdditionalFiles Include="assets/maps/IslandCellar.tmx" GameAssetLoad="Maps/$(UniqueId)_IslandCellar" />
 		<AdditionalFiles Include="assets/maps/IslandHouseUpgrade.tmx" GameAssetLoad="Maps/$(UniqueId)_IslandFarmHouse2" />
+		<AdditionalFiles Include="assets/maps/Atrium.tmx" GameAssetLoad="Maps/$(UniqueId)_Atrium" />
 		<AdditionalFiles Include="assets/locations.json" GameAssetMerge="Data/Locations" />
 		<Shaders Include="assets/**/*.fx" />
 	</ItemGroup>

@@ -553,6 +553,64 @@
 		],
 		"DefaultAction": "tlitoo.BuildEx_Stockpile"
 	},
+	"Atrium": {
+		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.atrium.name]",
+		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.atrium.desc]",
+		"Texture": "Mods/tlitoo.BuildEx/Atrium",
+		"Builder": "IslandBird",
+		"BuildCost": 30000,
+		"BuildMaterials": [
+			{
+				"Id": "stone",
+				"ItemId": "(O)390",
+				"Amount": 200
+			},
+			{
+				"Id": "wood",
+				"ItemId": "(O)298",
+				"Amount": 600
+			}
+		],
+		"Size": {
+			"X": 7,
+			"Y": 4
+		},
+		"SourceRect": {
+			"X": 0,
+			"Y": 0,
+			"Width": 112,
+			"Height": 128
+		},
+		"IndoorItems": [
+			{
+				"Id": "incubator",
+				"ItemId": "(BC)101",
+				"Indestructible": true,
+				"Tile": {
+					"X": 20,
+					"Y": 19
+				}
+			},
+			{
+				"Id": "hopper",
+				"ItemId": "(BC)99",
+				"Indestructible": true,
+				"Tile": {
+					"X": 4,
+					"Y": 3
+				}
+			}
+		],
+		"IndoorMap": "tlitoo.BuildEx_Atrium",
+		"IndoorMapType": "StardewValley.AnimalHouse",
+		"MaxOccupants": 12,
+		"AllowAnimalPregnancy": true,
+		"ValidOccupantTypes": [ "Barn", "Coop", "Big Barn", "Big Coop", "Deluxe Barn", "Deluxe Coop", "Premium Barn", "Premium Coop"],
+		"HumanDoor": {
+			"X": 3,
+			"Y": 3
+		}
+	},
 	"MagicPond": {
 		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.MagicPond.name]",
 		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.MagicPond.desc]",

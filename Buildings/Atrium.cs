@@ -1,25 +1,13 @@
 ﻿using BuildingsExpanded.Framework;
 using HarmonyLib;
 using StardewValley;
-using StardewValley.Buildings;
 using StarModGen.Lib;
 using System.Reflection.Emit;
-using System.Xml.Serialization;
 
 namespace BuildingsExpanded.Buildings;
 
-[XmlType("Mods_" + MOD_ID + "_Atrium")]
-public class Atrium : Building
+public class Atrium
 {
-	public override void dayUpdate(int dayOfMonth)
-	{
-		base.dayUpdate(dayOfMonth);
-
-		if (GetIndoors() is not GameLocation where)
-			return;
-
-		where.loadPathsLayerObjectsInArea(0, 0, where.Map.DisplayWidth / 64, where.Map.DisplayHeight / 64);
-	}
 
 	[ModEvent]
 	internal static void Init(object? _, SetupEventArgs ev)
@@ -29,7 +17,7 @@ public class Atrium : Building
 	}
 
 	public static bool ForceAllowGrassEat(bool grassEatAllowed, GameLocation where)
-		=> grassEatAllowed || where.ParentBuilding is Atrium;
+		=> grassEatAllowed || where.HasMapPropertyWithValue(MOD_ID + "_AllowEatGrass");
 
 	private static IEnumerable<CodeInstruction> ModifyBehavior(IEnumerable<CodeInstruction> codes, ILGenerator gen)
 	{
@@ -49,6 +37,20 @@ public class Atrium : Building
 
 		il
 			.Advance(2)
+			.InsertAndAdvance(
+				new(OpCodes.Ldloc_0),
+				new(OpCodes.Ldfld, targetField),
+				new(OpCodes.Call, typeof(Atrium).GetMethod(nameof(ForceAllowGrassEat)))
+			)
+			.MatchStartForward(
+				new(OpCodes.Ldarg_0),
+				new(OpCodes.Call, typeof(FarmAnimal).GetMethod(nameof(FarmAnimal.GetHarvestType)))
+			)
+			.MatchEndBackwards(
+				new(OpCodes.Ldfld, targetField),
+				new(OpCodes.Callvirt, typeof(GameLocation).GetProperty(nameof(GameLocation.IsOutdoors))!.GetMethod)
+			)
+			.Advance(1)
 			.InsertAndAdvance(
 				new(OpCodes.Ldloc_0),
 				new(OpCodes.Ldfld, targetField),
