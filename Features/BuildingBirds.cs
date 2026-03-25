@@ -2,7 +2,6 @@
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
@@ -19,6 +18,7 @@ internal class BuildingBirds
 		= AccessTools.FieldRefAccess<PerchingBirds, Point[]>("_birdLocations");
 	private static readonly AccessTools.FieldRef<PerchingBirds, Point[]> birdRoosts
 		= AccessTools.FieldRefAccess<PerchingBirds, Point[]>("_birdRoostLocations");
+	private static bool enabled = true;
 
 	[ModEvent]
 	public static void ChangeLocation(object? _, WarpedEventArgs ev)
@@ -32,11 +32,18 @@ internal class BuildingBirds
 	[ModEvent]
 	public static void Init(object? _, SetupEventArgs ev)
 	{
+		enabled = ev.Config.EnableBirds;
+        Config.Applied += ConfigChanged;
 		ev.Harmony
 			.With<Building>(nameof(Building.OnEndMove)).Postfix(DoBuildingMove);
 	}
 
-	private static void DoBuildingMove(Building __instance)
+    private static void ConfigChanged(Config c)
+    {
+		enabled = c.EnableBirds;
+    }
+
+    private static void DoBuildingMove(Building __instance)
 	{
 		var where = __instance.GetParentLocation();
 		foreach (var screen in GameRunner.instance.gameInstances.Where(g => g.instanceGameLocation == where))
@@ -100,7 +107,7 @@ internal class BuildingBirds
 	[ModEvent]
 	internal static void Draw(object? _, RenderedWorldEventArgs ev)
 	{
-		if (birds.Value is PerchingBirds b)
+		if (enabled && birds.Value is PerchingBirds b)
 		{
 			b.Update(Game1.currentGameTime);
 			b.Draw(ev.SpriteBatch);

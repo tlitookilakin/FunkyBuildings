@@ -70,6 +70,8 @@ namespace BuildingsExpanded.Framework
 				Assets.assets.ReloadShaders();
 			else if (file.EqualsIgnoreCase(Path.Join("assets", "sprites.json")))
 				helper.GameContent.InvalidateCache("Mods/" + MOD_ID + "/Sprites");
+			else if (file.EqualsIgnoreCase(Path.Join("assets", "misc", "birdspots.json")))
+				helper.GameContent.InvalidateCache("Data/Buildings");
 		}
 #endif
 

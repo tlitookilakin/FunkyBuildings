@@ -57,6 +57,9 @@
 				"Type": "Collect"
 			}
 		],
+		"Metadata": {
+			"tlitoo.BuildEx_BirdSpots": "0 0 2 -1"
+		},
 		"DefaultAction": "BuildingChest Output"
 	},
 	"IslandFarmhouse": {
@@ -83,7 +86,10 @@
 		"DrawShadow": false,
 		"NonInstancedIndoorLocation": "IslandFarmHouse",
 		"CustomFields": {
-			"tlitoo.BuildEx_NoDemolish": ""
+			"tlitoo.BuildEx_NoDemolish": "T"
+		},
+		"Metadata": {
+			"tlitoo.BuildEx_BirdSpots": "1 0 4 0 5 -3 2 -4"
 		}
 	},
 	"IslandFarmObelisk": {
@@ -122,7 +128,7 @@
 		"DrawShadow": false,
 		"DefaultAction": "FarmObelisk",
 		"Metadata": {
-			"tlitoo.BuildEx_BirdSpots": "0 0 1 0 2 0"
+			"tlitoo.BuildEx_BirdSpots": "0 -3 2 -4 1 -5"
 		}
 	},
 	"Mailbox": {
@@ -211,6 +217,9 @@
 				"Type": "Chest"
 			}
 		],
+		"Metadata": {
+			"tlitoo.BuildEx_BirdSpots": "0 0 1 -2"
+		},
 		"FadeWhenBehind": false,
 		"DrawShadow": false
 	},
@@ -455,6 +464,9 @@
 		"CustomFields": {
 			"tlitoo.BuildEx_StockpileCapacity": "300"
 		},
+		"Metadata": {
+			"tlitoo.BuildEx_BirdSpots": "0 1"
+		},
 		"Chests": [
 			{
 				"Id": "storage",
@@ -501,6 +513,9 @@
 		"CustomFields": {
 			"tlitoo.BuildEx_StockpileCapacity": "600"
 		},
+		"Metadata": {
+			"tlitoo.BuildEx_BirdSpots": "2 -1 1 -3"
+		},
 		"Chests": [
 			{
 				"Id": "storage",
@@ -546,6 +561,9 @@
 		},
 		"CustomFields": {
 			"tlitoo.BuildEx_StockpileCapacity": "900"
+		},
+		"Metadata": {
+			"tlitoo.BuildEx_BirdSpots": "0 -3 1 -2 2S"
 		},
 		"Chests": [
 			{
@@ -611,6 +629,9 @@
 		"HumanDoor": {
 			"X": 3,
 			"Y": 3
+		},
+		"Metadata": {
+			"tlitoo.BuildEx_BirdSpots": "0 2 3 0 4 -4"
 		}
 	},
 	"MagicPond": {

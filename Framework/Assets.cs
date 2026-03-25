@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.GameData;
+using StardewValley.GameData.Buildings;
 using StardewValley.GameData.Locations;
 using StarModGen.Lib;
 
@@ -33,12 +34,15 @@ namespace BuildingsExpanded.Framework
 			=> weatherOverlay ??= ModUtilities.LoadEffect("assets/effects/weather.mgfx");
 		private Effect? weatherOverlay;
 
+		private static IModContentHelper mod = null!;
+
 		[AssetEntry]
 		public partial void Entry(IModHelper helper);
 
 		[ModEvent]
 		public static void Init(object? s, SetupEventArgs ev)
 		{
+			mod = ev.Helper.ModContent;
 			assets = new();
 			assets.Entry(ev.Helper);
 		}
@@ -83,6 +87,24 @@ namespace BuildingsExpanded.Framework
 
 			if (!data.Properties.ContainsKey("ValidBuildRect"))
 				data.Properties["ValidBuildRect"] = "32 34 68 51";
+		}
+
+		[AssetEdit("Data/Buildings")]
+		public void AddBirdSpots(IAssetData asset)
+		{
+			const string key = MOD_ID + "_BirdSpots";
+
+			var data = asset.AsDictionary<string, BuildingData>().Data;
+			var spots = mod.Load<Dictionary<string, string>>("assets/misc/birdspots.json");
+			foreach ((var id, var spot) in spots)
+			{
+				if (!data.TryGetValue(id, out var d))
+					continue;
+
+				d.Metadata ??= [];
+				if (!d.Metadata.ContainsKey(key))
+					d.Metadata.Add(key, spot);
+			}
 		}
 	}
 }
