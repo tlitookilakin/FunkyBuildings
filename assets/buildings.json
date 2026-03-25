@@ -287,7 +287,7 @@
 			}
 		]
 	},
-	"OminousEffigy": {
+/*	"OminousEffigy": {
 		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.OminousEffigy.name]",
 		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.OminousEffigy.desc]",
 		"Texture": "Mods/tlitoo.BuildEx/Effigy",
@@ -329,7 +329,7 @@
 		},
 		"DefaultAction": "tlitoo.BuildEx_OminousEffigy",
 		"MagicalBuilding": true
-	},
+	},*/
 	"FieldStone": {
 		"Name": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.FieldStone.name]",
 		"Description": "[LocalizedText Mods/tlitoo.BuildEx/Strings:buildings.FieldStone.desc]",
@@ -567,7 +567,7 @@
 			},
 			{
 				"Id": "wood",
-				"ItemId": "(O)298",
+				"ItemId": "(O)388",
 				"Amount": 600
 			}
 		],

@@ -40,20 +40,28 @@ namespace BuildingsExpanded.Framework
 
 		public static Effect LoadEffect(string path)
 		{
-			byte[] raw =
-			#if DEBUG
-			File.ReadAllBytes(Path.Join(HotReload.FolderPath, path));
-			#else
-			typeof(ModUtilities).Assembly.GetManifestResourceStream(path.Replace('/', '.').Replace('\\', '.')).ReadAllBytes();
-			#endif
+			try
+			{
+				byte[] raw =
+				#if DEBUG
+				File.ReadAllBytes(Path.Join(HotReload.FolderPath, path));
+				#else
+				typeof(ModUtilities).Assembly.GetManifestResourceStream("BuildingsExpanded." + path.Replace('/', '.').Replace('\\', '.')).ReadAllBytes();
+				#endif
 
-			return new(Game1.graphics.GraphicsDevice, raw);
+				return new(Game1.graphics.GraphicsDevice, raw);
+			} 
+			catch (Exception e)
+			{
+				Print.Error($"Could not load effect '{path}':\n{e}");
+				return Game1.content.Load<Effect>("Effects\\ShadowRemoveMG3.8.0");
+			}
 		}
 
 		public static byte[] ReadAllBytes(this Stream? s)
 		{
 			if (s is null)
-				return [];
+				throw new FileNotFoundException();
 
 			using var reader = new BinaryReader(s);
 			return reader.ReadBytes((int)s.Length);
