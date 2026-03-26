@@ -1,6 +1,4 @@
 ﻿{
-	"config.EnabledBuildings.name": "Enabled Buildings",
-	"config.EnabledBuildings.desc": "Change which buildings from this mod are available",
 	"buildings.Alveary.name": "Alveary",
 	"buildings.Alveary.desc": "Home for a large hive of bees. Produces honey every day for every nearby flower.",
 	"buildings.ArborealCloche.name": "Arboreal Cloche",
@@ -34,5 +32,7 @@
 	"ui.lightning.single": "This attractor has been struck by lightning once.",
 	"ui.lightning.multiple": "This attractor has been struck by lightning {0} times.",
 	"buildings.atrium.name": "Atrium",
-	"buildings.atrium.desc": "Holds up to 12 coop or barn animals, allowing them to graze and forage indoors."
+	"buildings.atrium.desc": "Holds up to 12 coop or barn animals, allowing them to graze and forage indoors.",
+	"config.EnableBirds.name": "Enable Birds",
+	"config.EnableBirds.desc": "Adds birds that roost on buildings and fly around."
 }

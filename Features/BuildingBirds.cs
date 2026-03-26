@@ -7,6 +7,7 @@ using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.BellsAndWhistles;
 using StardewValley.Buildings;
+using StardewValley.Mods;
 using StarModGen.Lib;
 
 namespace BuildingsExpanded.Features;
@@ -105,8 +106,11 @@ internal class BuildingBirds
 	}
 
 	[ModEvent]
-	internal static void Draw(object? _, RenderedWorldEventArgs ev)
+	internal static void Draw(object? _, RenderedStepEventArgs ev)
 	{
+		if (ev.Step != RenderSteps.World_AlwaysFront)
+			return;
+
 		if (enabled && birds.Value is PerchingBirds b)
 		{
 			b.Update(Game1.currentGameTime);

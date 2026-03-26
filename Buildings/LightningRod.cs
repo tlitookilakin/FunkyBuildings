@@ -108,12 +108,26 @@ public class LightningRod : Building
 		);
 	}
 
+    public override bool isActionableTile(int xTile, int yTile, Farmer who)
+    {
+		if (base.isActionableTile(xTile, yTile, who))
+			return true;
+
+		if (this.GetBounds().Contains(xTile, yTile))
+			return true;
+
+		return false;
+    }
+
 	public override bool doAction(Vector2 tileLocation, Farmer who)
 	{
 		if (base.doAction(tileLocation, who))
 			return true;
 
 		if (isUnderConstruction())
+			return false;
+
+		if (!this.GetBounds().Contains(tileLocation.X, tileLocation.Y))
 			return false;
 
 		if (totalStrikes.Value is 0)

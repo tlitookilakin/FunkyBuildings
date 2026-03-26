@@ -14,6 +14,8 @@ public class Stockpile
 	internal static void Init(object? s, SetupEventArgs ev)
 	{
 		GameLocation.RegisterTileAction(MOD_ID + "_Stockpile", DoAction);
+		ev.Harmony
+			.With<Building>(nameof(Building.BeforeDemolish)).Postfix(DropThingsOnFloor);
 	}
 
 	public static bool DoAction(GameLocation where, string[] args, Farmer who, Point tile)
@@ -24,6 +26,25 @@ public class Stockpile
 
 		OpenStockpile(building);
 		return true;
+	}
+
+	public static void DropThingsOnFloor(Building __instance)
+	{
+		if (!__instance.TryGetCustomField(MOD_ID + "_StockpileCapacity", out _))
+			return;
+
+		var where = __instance.GetParentLocation();
+		var pos = __instance.GetBounds().Center.ToVector2() * 64f;
+
+		if (__instance.GetBuildingChest("storage") is Chest c)
+		{
+			foreach (var item in c.Items)
+			{
+				var i = item.getOne();
+				i.Stack = item.Stack;
+				Game1.createItemDebris(i, pos, Game1.random.Next(4), where);
+			}
+		}
 	}
 
 	public static void OpenStockpile(Building b)
