@@ -185,6 +185,8 @@
 			"Width": 48,
 			"Height": 96
 		},
+		"CollisionMap": "OXO\nXXX\nOXO",
+		"SortTileOffset": 1,
 		"DrawLayers": [
 			{
 				"Id": "floor",

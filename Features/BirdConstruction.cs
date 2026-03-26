@@ -330,6 +330,13 @@ public class BirdConstruction
 
 	}
 
+	[ModEvent]
+	internal static void OnDayStart(object? _, DayStartedEventArgs ev)
+	{
+		if (Game1.MasterPlayer.mailReceived.Contains(MOD_ID + "_IslandHouseUpgrade"))
+			Game1.getLocationFromName("IslandFarmHouse")?.mapPath?.Value = $"Maps/{MOD_ID}_IslandFarmHouse2";
+	}
+
 	private static xTile.Dimensions.Location GetViewportPosition(GameLocation where, Building b)
 	{
 		Point p;

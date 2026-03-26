@@ -13,7 +13,7 @@ namespace BuildingsExpanded.Framework
 	{
 		public static Assets assets = null!;
 
-		[Asset("/BuildingData")]
+		[Asset("/BuildingData", "assets/misc/extra.json")]
 		public partial ExtraData BuildingData { get; }
 
 		[Asset("/UI/Cloche", "assets/ui/cloche.png")]
@@ -86,7 +86,7 @@ namespace BuildingsExpanded.Framework
 			data.Properties["BuildConditions"] = "PLAYER_HAS_MAIL Any willyBoatFixed";
 
 			if (!data.Properties.ContainsKey("ValidBuildRect"))
-				data.Properties["ValidBuildRect"] = "32 34 68 51";
+				data.Properties["ValidBuildRect"] = "32 34 69 51";
 		}
 
 		[AssetEdit("Data/Buildings")]

@@ -4,6 +4,7 @@
   <property name="AmbientLight" value="200 200 90"/>
   <property name="CanCaskHere" value="T"/>
   <property name="FloorIDs" value="Main 27"/>
+  <property name="LocationContext" value="Island"/>
   <property name="ParrotPerches" value="2 2 0 6 0 12 12 16 17 16 19 15 19 3 20 10 12 1 6 1 9 20 2 20 6 21 2 17"/>
   <property name="WallIDs" value="Main 12"/>
   <property name="Warp" value="4 1 IslandFarmHouse 5 16 5 1 IslandFarmHouse 6 16"/>
