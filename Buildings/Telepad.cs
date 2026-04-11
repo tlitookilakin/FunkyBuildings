@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BuildingsExpanded.Framework;
+using Microsoft.Xna.Framework;
 using Netcode;
 using StardewValley;
 using StardewValley.Buildings;
@@ -29,6 +30,9 @@ public class Telepad : Building
 			return true;
 
 		if (isUnderConstruction())
+			return false;
+
+		if (!this.GetBounds().Contains(tileLocation))
 			return false;
 
 		if (DisplayName is null)
