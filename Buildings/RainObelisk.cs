@@ -37,10 +37,18 @@ public class RainObelisk : EffectBuilding
 
 		var id = context.RainTotemAffectsContext ?? where.GetLocationContextId();
 
-		if (id == "Default" && Utility.isFestivalDay(Game1.dayOfMonth + 1, Game1.season))
-			return true;
+		if (id == "Default")
+		{
+			if (Utility.isFestivalDay(Game1.dayOfMonth + 1, Game1.season))
+				return true;
 
-		where.GetWeather().WeatherForTomorrow = "Rain";
+			Game1.netWorldState.Value.WeatherForTomorrow = "Rain";
+		}
+		else
+		{
+			where.GetWeather().WeatherForTomorrow = "Rain";
+		}
+
 		Game1.pauseThenMessage(2000, Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.12822"));
 
 		var pos = who.Position;
